@@ -1,0 +1,6 @@
+gafas:_si
+cabello:_rubio
+sexo:_mujer
+hola1
+hola2
+hola3

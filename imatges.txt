@@ -5,5 +5,3 @@ jorge.jpg,gafas_si,cabello_moreno,sexo_hombre
 pablo.jpg,gafas_no,cabello_rubio,sexo_hombre
 tatiana.jpg,gafas_no,cabello_rubio,sexo_mujer
 maria.jpg,gafas_no,cabello_castaño,sexo_mujer
-
-

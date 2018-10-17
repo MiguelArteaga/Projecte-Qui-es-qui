@@ -1,7 +1,7 @@
-noelia.jpg,gafas_si,cabello_castaño,sexo_mujer
-manolo.jpg,gafas_si,cabello_castaño,sexo_hombre
-elisa.jpg,gafas_no,cabello_moreno,sexo_mujer
-jorge.jpg,gafas_si,cabello_moreno,sexo_hombre
-pablo.jpg,gafas_no,cabello_rubio,sexo_hombre
-tatiana.jpg,gafas_no,cabello_rubio,sexo_mujer
-maria.jpg,gafas_no,cabello_castaño,sexo_mujer
+noelia.jpg:gafas_si,cabello_castaño,sexo_mujer
+manolo.jpg:gafas_si,cabello_castaño,sexo_hombre
+elisa.jpg:gafas_no,cabello_moreno,sexo_mujer
+jorge.jpg:gafas_si,cabello_moreno,sexo_hombre
+pablo.jpg:gafas_no,cabello_rubio,sexo_hombre
+tatiana.jpg:gafas_no,cabello_rubio,sexo_mujer
+maria.jpg:gafas_no,cabello_castaño,sexo_mujer

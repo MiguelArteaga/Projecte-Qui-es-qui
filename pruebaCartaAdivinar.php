@@ -2,10 +2,10 @@
 <html>
 <head>
 	<title></title>
-	<script type="text/javascript" src="funcionesAdivinarCartas.js"></script>
+	
 </head>
 <body>
-	<p id="cartaAdivinar"></p>
+	<p id="cartas"></p>
 	<button onclick="adivinaCarta()">Carta Adivinar</button>
 	<?php
 	#Lectura de fichero.
@@ -32,11 +32,41 @@
 	 #print_r($arrayGeneral);
 	?>
 	<script type="text/javascript" >
-		var arrayJS=<?php echo json_encode($arrayGeneral);?>;
-	   // for(var i=0;i<arrayJS.length;i++){
+		
+	   	var arraycartas=<?php echo json_encode($arrayGeneral);?>;
+		var arraynombres=[];
+		for(var i=0;i<arraycartas.length;i++){
+			arraynombres.push(arraycartas[i][0]);}
+			document.write(arraynombres);
 
-       //document.write("<br>"+arrayJS[i]);}
+	    function adivinaCarta() {
+	    	var i=Math.floor((Math.random() * 7));
+			var cartaAdivinar=arraynombres[i];
+			//document.write(cartaAdivinar+"<br>");
+			delete arraynombres[i];
+			//var arraynombres=arraynombres;
+			//document.write(arraynombres);
 
+			for (var i=0 ;i <= arraynombres.length; i++) {
+				//document.write("<br>"+arraynombres[i]);
+			}
+			var arrayMezclar= ['0','1','2','3','4','5','6'];
+			//document.write(arraysNumerosCartas);
+
+		    var i,j,k;
+		    for (i = arrayMezclar.length; i; i--) {
+		        j = Math.floor(Math.random() * i);
+		        k = arrayMezclar[i - 1];
+		        arrayMezclar[i - 1] = arrayMezclar[j];
+		        arrayMezclar[j] = k;
+		    }
+		    for (i=0;i<=arrayMezclar.length;i++){
+		    	 document.write(arraynombres[arrayMezclar[i]]);
+		    }
+		   
+
+
+	    	}
 
 	</script>
 

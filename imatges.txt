@@ -10,3 +10,4 @@ alba.jpg:gafas_si,cabello_rubio,sexo_mujer
 paula.jpg:gafas_no,cabello_castaño,sexo_mujer
 cristina.jpg:gafas_no,cabello_moreno,sexo_mujer
 julia.jpg:gafas_no,cabello_rubio,sexo_mujer
+julia.jpg:gafas_no,cabello_rubio,sexo_mujer

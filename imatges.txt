@@ -1,0 +1,12 @@
+manolo.jpg:gafas_si,cabello_castany,sexo_hombre
+jorge.jpg:gafas_si,cabello_moreno,sexo_hombre
+rafa.jpg:gafas_si,cabello_rubio,sexo_hombre
+lucas.jpg:gafas_no,cabello_castany,sexo_hombre
+antonio.jpg:gafas_no,cabello_moreno,sexo_hombre
+pablo.jpg:gafas_no,cabello_rubio,sexo_hombre
+noelia.jpg:gafas_si,cabello_castany,sexo_mujer
+irene.jpg:gafas_si,cabello_moreno,sexo_mujer
+alba.jpg:gafas_si,cabello_rubio,sexo_mujer
+paula.jpg:gafas_no,cabello_castany,sexo_mujer
+cristina.jpg:gafas_no,cabello_moreno,sexo_mujer
+julia.jpg:gafas_no,cabello_rubio,sexo_mujer

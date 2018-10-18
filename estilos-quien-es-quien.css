@@ -42,7 +42,7 @@
  width: 10%;
     height: 20%;
     position: absolute;
-    top: 37%;
+    top: 38%;
     left: 10%;
    
 }
@@ -141,4 +141,25 @@
   bottom: -20%;
   width: 100%;
 
+}
+
+img:hover{
+    box-shadow: 0 0 30px #FF2525;
+}
+div:hover{
+    -webkit-animation:animar .6s 1;
+}
+
+@-webkit-keyframes animar{
+    0%{-webkit-transform:translate(0px,0px);}
+    10%{-webkit-transform:translate(20px,0px);}
+    20%{-webkit-transform:translate(0px,0px);}
+    30%{-webkit-transform:translate(20px,0px);}
+    40%{-webkit-transform:translate(0px,0px);}
+    50%{-webkit-transform:translate(20px,0px);}
+    60%{-webkit-transform:translate(0px,0px);}
+    70%{-webkit-transform:translate(20px,0px);}
+    80%{-webkit-transform:translate(0px,0px);}
+    90%{-webkit-transform:translate(20px,0px);}
+    100%{-webkit-transform:translate(0px,0px);}
 }

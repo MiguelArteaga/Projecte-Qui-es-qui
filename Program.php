@@ -113,7 +113,7 @@
         </select>
       </div>
       <div class="caja3">
-        <p id="sexe">Sexe</p>
+        <p id="sexe">Sexo</p>
         <select name="OptSexo[]">
           <option value="Seleciona">Selecciona</option>
           <option value="Hombre">Hombre</option>

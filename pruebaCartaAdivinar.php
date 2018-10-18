@@ -54,30 +54,38 @@
 			var cartaAdivinar=arraynombres[i];
 			//document.write(cartaAdivinar+"<br>");
 			
-			//Eliminamos
+			//Eliminamos 
 			delete arraynombres[i];
 			
-			//document.write(arraynombres);
+			
 
-			for (var i=0 ;i <= arraynombres.length; i++) {
-				//document.write("<br>"+arraynombres[i]);
+			
+			
+			var arrayNumeros=[];
+			
+
+
+			for (i=0; i <= arraynombres.length; i++){
+				arrayNumeros.push(i);
 			}
-			var arrayMezclar= ['0','1','2','3','4','5','6'];
-			//document.write(arraysNumerosCartas);
+			
 
 		    var i,j,k;
-		    for (i = arrayMezclar.length; i; i--) {
+		    for (i = arrayNumeros.length; i; i--) {
 		        j = Math.floor(Math.random() * i);
-		        k = arrayMezclar[i - 1];
-		        arrayMezclar[i - 1] = arrayMezclar[j];
-		        arrayMezclar[j] = k;
+		        k = arrayNumeros[i - 1];
+		        arrayNumeros[i - 1] = arrayNumeros[j];
+		        arrayNumeros[j] = k;
 		    }
-		    for (i=0;i<=arrayMezclar.length;i++){
-		    	 document.write("<br>"+arraynombres[arrayMezclar[i]]);
+		    for (i=0;i<=arrayNumeros.length;i++){
+		    	 document.write("<br>"+arraynombres[arrayNumeros[i]]);
 		    }
 	    }
 
 	</script>
+	<?php
+	
+	?>
 
 </body>
 </html>

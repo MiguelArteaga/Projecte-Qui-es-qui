@@ -81,6 +81,17 @@
 		    	 document.write("<br>"+arraynombres[arrayNumeros[i]]);
 		    }
 	    }
+	    var img = document.getElementsByTagName("img")[0],
+		    imagenes = ["http://goo.gl/nSKDVT", "http://goo.gl/3NdA88", "http://goo.gl/cwGrAA"],
+		    total = imagenes.length,
+		    cont = 0;
+
+		img.src = imagenes[cont];
+
+		img.addEventListener("click", function(){
+		    cont = cont == total - 1 ? 0 : ++cont;
+		    img.src = imagenes[cont];
+		}, false);
 
 	</script>
 	<?php

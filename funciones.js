@@ -1,11 +1,9 @@
 arrayNombreCartas=[];
 
 var sonidocarta= new Audio('sonido/mariosalto.mp3');
-var contador = 0;
 
 
 function girar(id){
-	contador=0;
 	document.getElementById(id).addEventListener('click',girarcarta);
 	girarcarta(id);
 
@@ -117,13 +115,6 @@ function validarPregunta(){
 		document.getElementById('OptCabello').value = 0;
     	document.getElementById('OptGafas').value = 0;
     	document.getElementById('OptSexo').value = 0;
-  }
-  if(contador==1){
-  	document.getElementById("mensajeError").innerText = "¿Seguro que quieres realizar otra pregunta sin girar carta?";
-  }
-  if(contador==0){
-  	document.getElementById("mensajeError").innerText = "";
-  	contador=1;
   }
 
 

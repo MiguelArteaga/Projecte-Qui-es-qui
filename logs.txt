@@ -1,1 +1,0 @@
-¡Error! Hay un nombre repetido en el archivo imatges.txt.

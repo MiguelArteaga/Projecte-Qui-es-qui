@@ -65,16 +65,27 @@ function validarSelect(){
 	if(selectCabello.value ==0 && selectGafas.value==0 && selectSexo.value==0){
     	document.getElementById("mensajeError").innerText = "¡Selecciona al menos una pregunta!";
 		
- 	}else{
+ 	}else if(selectCabello.value!=0 && selectGafas.value!=0 || selectGafas.value!=0 && selectSexo.value!=0 || selectSexo.value!=0 && selectCabello.value!=0){
+    	document.getElementById("mensajeError").innerText = "No puedes usar más de un pregunta a la vez.";
+		document.getElementById("mensajeCorrecto").innerText = "";
+
+		document.getElementById('OptCabello').value = 0;
+    	document.getElementById('OptGafas').value = 0;
+    	document.getElementById('OptSexo').value = 0;
+  	}
+ 	else{
  		validarPregunta();
  		document.getElementById('botoneasy').disabled=true;
  	}
 }
+var contador = 0;
+
 function validarPregunta(){
 	var elementoAtrib = document.querySelector('#cartaOculta');
 	var hair = elementoAtrib.getAttribute("cabello");
 	var glasses = elementoAtrib.getAttribute("gafas");
 	var gender = elementoAtrib.getAttribute("sexo");
+	
 	if(gender=="hombre<br"){
 		gender="hombre";
 	}
@@ -85,18 +96,23 @@ function validarPregunta(){
 	var selectGafas = document.getElementById("OptGafas");
 	var selectSexo = document.getElementById("OptSexo");
   	
-
 	if(selectCabello.value==hair){
 		document.getElementById("mensajeCorrecto").innerText = "Sí, tiene el color de pelo "+hair+".";
 		document.getElementById("mensajeCorrecto").style.background = "#abebc6";
+		contador=contador+1;
+		document.getElementById("contadorPregunta").innerText = "Contador: "+contador;
 	}
 	else if(selectGafas.value==glasses){
 		document.getElementById("mensajeCorrecto").innerText = glasses+" tiene gafas esta persona.";
 		document.getElementById("mensajeCorrecto").style.background = "#abebc6";
+		contador=contador+1;
+		document.getElementById("contadorPregunta").innerText = "Contador: "+contador;
 	}
 	else if(selectSexo.value==gender){
 		document.getElementById("mensajeCorrecto").innerText = "Sí, es "+gender+".";
 		document.getElementById("mensajeCorrecto").style.background = "#abebc6";
+		contador=contador+1;
+		document.getElementById("contadorPregunta").innerText = "Contador: "+contador;
 	}else{
 
 		document.getElementById("mensajeCorrecto").innerText = "No, te has equivocado.";
@@ -105,17 +121,9 @@ function validarPregunta(){
 		document.getElementById('OptCabello').value = 0;
     	document.getElementById('OptGafas').value = 0;
     	document.getElementById('OptSexo').value = 0;
+    	contador=contador+1;
+    	document.getElementById("contadorPregunta").innerText = "Contador: "+contador;
 	}
-
-
-  if(selectCabello.value!=0 && selectGafas.value!=0 || selectGafas.value!=0 && selectSexo.value!=0 || selectSexo.value!=0 && selectCabello.value!=0){
-    	document.getElementById("mensajeError").innerText = "No puedes usar más de un pregunta a la vez.";
-		document.getElementById("mensajeCorrecto").innerText = "";
-
-		document.getElementById('OptCabello').value = 0;
-    	document.getElementById('OptGafas').value = 0;
-    	document.getElementById('OptSexo').value = 0;
-  }
 
 
 }

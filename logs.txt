@@ -1,0 +1,1 @@
+¡Error! Hay caracteristicas que no estan en el archivo config.txt.

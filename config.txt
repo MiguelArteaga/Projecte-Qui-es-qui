@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Preguntas
 gafas si
 gafas no
@@ -6,3 +7,8 @@ cabello moreno
 cabello castany
 sexo mujer
 sexo hombre
+=======
+gafas:si no
+cabello:rubio moreno castany
+sexo:mujer hombre
+>>>>>>> 7c5288d339037c5129d0124c79f4bb2e40c9dbb0

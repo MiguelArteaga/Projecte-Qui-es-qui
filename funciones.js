@@ -1,6 +1,8 @@
 arrayNombreCartas=[];
 
 var sonidocarta= new Audio('sonido/mariosalto.mp3');
+var gameover= new Audio('sonido/gameover.mp3');
+var gamewin= new Audio('sonido/gamewin.mp3');
 
 
 function girar(id){
@@ -40,22 +42,25 @@ function finalJuego(){
 
 
 	var UltimaCarta=arrayNombresCartas2.filter(Boolean);
-
-
 	girarcarta('id13');
 	if(UltimaCarta==CartaOculta){
 		document.getElementById('p1prova').innerHTML="HAS GANADO!";
-		preguntar();
-
+		fartificiales();
 
 	}
 	else if(UltimaCarta!=CartaOculta) {
 		document.getElementById('p1prova').innerHTML="HAS PERDIDO!";
-
+		gameover.play();
 
 	}
 
 }
+function fartificiales(){
+	window.open('fuegosartificiales.php');
+	gamewin.play();
+	preguntar();
+}
+
 
 function validarSelect(){
 	var selectCabello = document.getElementById("OptCabello");

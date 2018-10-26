@@ -211,6 +211,30 @@ echo"<form method='post' name='formulario'>";
     <script type="text/javascript">
       var CartaOculta='<?php echo $cartaoculta;?>'
       var arrayNombresCartas2=<?php echo json_encode($img);?>;
+
+
+      // Fuegos artificiales
+
+      var bits=400; // Número de puntos
+      var intensity=15; // Intensidad de la explosión (recomendado entre 3 y 10)
+      var speed=20; // Velocidad (a menor numero, mas rapido)
+      var colours=new Array("#03f", "#f03", "#0e0", "#93f", "#0cc", "#f93");
+      //Colores de los fuegos
+
+      var dx, xpos, ypos, bangheight;
+      var Xpos=new Array();
+      var Ypos=new Array();
+      var dX=new Array();
+      var dY=new Array();
+      var decay=new Array();
+      var colour=0;
+      var swide=800;
+      var shigh=600;
+
+
+      
+      
+       
     </script>
   </body>
 </html>

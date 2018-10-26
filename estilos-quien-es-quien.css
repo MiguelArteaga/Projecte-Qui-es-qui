@@ -686,3 +686,9 @@ img:hover{
   margin-right: 35%;
   padding: 10%;
 }
+.contadorPregunta{
+    background-color: #D8D8D8;
+    margin:2% 2%;
+    padding: 1%;
+    border-bottom: 6px solid LightSkyBlue ;
+}

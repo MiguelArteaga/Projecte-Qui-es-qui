@@ -198,7 +198,7 @@ echo"<form method='post' name='formulario'>";
           echo"</div>";
           echo"<input type='button' name='pregunta' value='Haz la pregunta' onclick='validarSelect()'>";
           echo"</form>";
-          echo"<p class='contadorPregunta' id='contadorPregunta'>Contador: </p>";
+          echo"<p class='contadorPregunta' id='contadorPregunta'>Contador: 0</p>";
           echo"<div class='mensajeCorrecto'>";
           echo"<p id='mensajeCorrecto'></p>";
           echo"</div>";

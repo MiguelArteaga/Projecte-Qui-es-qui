@@ -3,7 +3,7 @@ arrayNombreCartas=[];
 var sonidocarta= new Audio('sonido/mariosalto.mp3');
 var gameover= new Audio('sonido/gameover.mp3');
 var gamewin= new Audio('sonido/gamewin.mp3');
-
+var repetir = 0;
 
 function girar(id){
 	document.getElementById(id).addEventListener('click',girarcarta);
@@ -14,7 +14,7 @@ function girar(id){
 
 
 function girarcarta(id2){
-	
+	repetir=0;
 	document.getElementById(id2).classList.add('flipped');
 	sonidocarta.play();
 
@@ -81,6 +81,7 @@ function validarSelect(){
  		validarPregunta();
  		document.getElementById('botoneasy').disabled=true;
  	}
+ 	repetirPregunta()
 }
 var contador = 0;
 
@@ -105,18 +106,21 @@ function validarPregunta(){
 		document.getElementById("mensajeCorrecto").style.background = "#abebc6";
 		contador=contador+1;
 		document.getElementById("contadorPregunta").innerText = "Contador: "+contador;
+		repetir=1;
 	}
 	else if(selectGafas.value==glasses){
 		document.getElementById("mensajeCorrecto").innerText = glasses+" tiene gafas esta persona.";
 		document.getElementById("mensajeCorrecto").style.background = "#abebc6";
 		contador=contador+1;
 		document.getElementById("contadorPregunta").innerText = "Contador: "+contador;
+		repetir=1;
 	}
 	else if(selectSexo.value==gender){
 		document.getElementById("mensajeCorrecto").innerText = "Sí, es "+gender+".";
 		document.getElementById("mensajeCorrecto").style.background = "#abebc6";
 		contador=contador+1;
 		document.getElementById("contadorPregunta").innerText = "Contador: "+contador;
+		repetir=1;
 	}else{
 
 		document.getElementById("mensajeCorrecto").innerText = "No, te has equivocado.";
@@ -127,7 +131,9 @@ function validarPregunta(){
     	document.getElementById('OptSexo').value = 0;
     	contador=contador+1;
     	document.getElementById("contadorPregunta").innerText = "Contador: "+contador;
+    	repetir=1;
 	}
+
 
 
 }
@@ -143,6 +149,7 @@ function preguntar(){
 
     }
 }
+<<<<<<< HEAD
 
 
 function fartificiales(){
@@ -275,4 +282,14 @@ function set_width() {
 	swide=document.body.clientWidth;
 	shigh=document.body.clientHeight;
 	}
+=======
+function repetirPregunta(){
+
+	 if(contador==2){
+	 	var o="ho";
+ 		alert(o);
+ 	}else{
+ 		validarPregunta();
+ 	}
+>>>>>>> fc5349f17d9e178145568c4593bae005675062eb
 }

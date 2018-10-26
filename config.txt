@@ -1,3 +1,0 @@
-gafas:si_no
-cabello:rubio_moreno_castaño
-sexo:mujer_hombre

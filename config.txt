@@ -1,8 +1,3 @@
-Preguntas
-gafas si
-gafas no
-cabello rubio
-cabello moreno
-cabello castany
-sexo mujer
-sexo hombre
+gafas:si no
+cabello:rubio moreno castany
+sexo:mujer hombre

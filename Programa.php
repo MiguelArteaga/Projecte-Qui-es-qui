@@ -140,6 +140,7 @@
     $y=2;
     $w=1;
     $i=0;
+    echo"<div class='tableroImg'>";
     foreach ($img as $fotos) {
       if( substr($fotos,-3)=="jpg" or substr($fotos,-3)=="png" or substr($fotos,-4)=="jpeg"){
         echo "<div id='$arrayId[$i]' onclick='girar(this.id)' class='$arrayDiv[$i]'>";
@@ -162,6 +163,7 @@
         }
     }
     }
+    echo"</div>";
       $namesC = array('rubio', 'moreno', 'castany');
         $namesG = array('si', 'no');
         $namesS = array('hombre', 'mujer');

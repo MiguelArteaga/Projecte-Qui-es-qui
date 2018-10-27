@@ -3,6 +3,9 @@
     background-image: url('imagenes2/hasganado.png');
 
 }
+.tableroImg{
+    background-image: url('imagenes2/tableroImg.jpg');
+}
 body{
     background-image:url("fondo2.png"); 
 }

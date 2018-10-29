@@ -3,7 +3,9 @@ arrayNombreCartas=[];
 var sonidocarta= new Audio('sonido/mariosalto.mp3');
 var gameover= new Audio('sonido/gameover.mp3');
 var gamewin= new Audio('sonido/gamewin.mp3');
-var repetir = 0;
+
+
+
 
 function girar(id){
 	document.getElementById(id).addEventListener('click',girarcarta);
@@ -12,13 +14,11 @@ function girar(id){
 
 }
 
-
+var CartaGirada=0;
 function girarcarta(id2){
-	repetir=0;
+	CartaGirada+=1;
 	document.getElementById(id2).classList.add('flipped');
 	sonidocarta.play();
-
-
 }
 
 function nombreCartas(id){
@@ -80,10 +80,37 @@ function validarSelect(){
  	else{
  		validarPregunta();
  		document.getElementById('botoneasy').disabled=true;
+ 		
+
  	}
- 	repetirPregunta()
+
+
 }
 var contador = 0;
+var PreguntaHecha = 0;
+var CartaNoGirada =0;
+
+function mensajeAviso(){
+	if(PreguntaHecha==1 && CartaNoGirada == CartaGirada){
+		confirmarMensajeAviso();
+	}else if(PreguntaHecha>=1 && CartaNoGirada == CartaGirada){
+
+	}else{
+		PreguntaHecha =0;
+	}
+	CartaNoGirada=CartaGirada;
+	PreguntaHecha+=1;
+}
+function confirmarMensajeAviso(){
+	var opcion = confirm("¿Seguro que quieres realizar otra pregunta sin girar ninguna carta?");
+	if(opcion==true){
+		
+		document.getElementById("contadorPregunta").innerText = "Contador: "+contador;
+	}else{
+		contador=contador-1;
+		document.getElementById("contadorPregunta").innerText = "Contador: "+contador;
+	}
+}
 
 function validarPregunta(){
 	var elementoAtrib = document.querySelector('#cartaOculta');
@@ -103,27 +130,29 @@ function validarPregunta(){
   	
 	if(selectCabello.value==hair){
 		document.getElementById("mensajeCorrecto").innerText = "Sí, tiene el color de pelo "+hair+".";
-		document.getElementById("mensajeCorrecto").style.background = "#abebc6";
+		document.getElementById("mensajeCorrecto").style.background ="#97f087";
 		contador=contador+1;
 		document.getElementById("contadorPregunta").innerText = "Contador: "+contador;
-		repetir=1;
+		document.getElementById('OptCabello').value = 0;
+
 	}
 	else if(selectGafas.value==glasses){
 		document.getElementById("mensajeCorrecto").innerText = glasses+" tiene gafas esta persona.";
-		document.getElementById("mensajeCorrecto").style.background = "#abebc6";
+		document.getElementById("mensajeCorrecto").style.background ="#97f087";
 		contador=contador+1;
 		document.getElementById("contadorPregunta").innerText = "Contador: "+contador;
-		repetir=1;
+		document.getElementById('OptGafas').value = 0;
+
 	}
 	else if(selectSexo.value==gender){
 		document.getElementById("mensajeCorrecto").innerText = "Sí, es "+gender+".";
-		document.getElementById("mensajeCorrecto").style.background = "#abebc6";
+		document.getElementById("mensajeCorrecto").style.background ="#97f087";
 		contador=contador+1;
 		document.getElementById("contadorPregunta").innerText = "Contador: "+contador;
-		repetir=1;
+		document.getElementById('OptSexo').value = 0;
 	}else{
 
-		document.getElementById("mensajeCorrecto").innerText = "No, te has equivocado.";
+		document.getElementById("mensajeCorrecto").innerText = "No tiene esa caracteristica.";
 		document.getElementById("mensajeCorrecto").style.background ="#f1948a";
 
 		document.getElementById('OptCabello').value = 0;
@@ -131,7 +160,6 @@ function validarPregunta(){
     	document.getElementById('OptSexo').value = 0;
     	contador=contador+1;
     	document.getElementById("contadorPregunta").innerText = "Contador: "+contador;
-    	repetir=1;
 	}
 
 
@@ -149,8 +177,6 @@ function preguntar(){
 
     }
 }
-<<<<<<< HEAD
-
 
 function fartificiales(){
 	set_width();
@@ -282,14 +308,4 @@ function set_width() {
 	swide=document.body.clientWidth;
 	shigh=document.body.clientHeight;
 	}
-=======
-function repetirPregunta(){
-
-	 if(contador==2){
-	 	var o="ho";
- 		alert(o);
- 	}else{
- 		validarPregunta();
- 	}
->>>>>>> fc5349f17d9e178145568c4593bae005675062eb
 }

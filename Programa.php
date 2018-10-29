@@ -140,13 +140,15 @@
     $y=2;
     $w=1;
     $i=0;
-    echo"<div class='tableroImg'>";
+    
     foreach ($img as $fotos) {
       if( substr($fotos,-3)=="jpg" or substr($fotos,-3)=="png" or substr($fotos,-4)=="jpeg"){
+        echo"<div class='fondoImg'>";
         echo "<div id='$arrayId[$i]' onclick='girar(this.id)' class='$arrayDiv[$i]'>";
         echo "<div><img id='$fotos' onclick='nombreCartas(this.id)' src='imagenes/$fotos' width='100' height='100'></div>";
         echo "<div class='back'><img src='imagenes2/reversos.jpg' width='100' height='100'></div>";
         echo "</div>";
+        echo"</div>";
         $i=$i+1;
         if ($cartaoculta==$fotos) {
           echo "<div id='id13' class='divoculta'>";
@@ -163,7 +165,7 @@
         }
     }
     }
-    echo"</div>";
+    
       $namesC = array('rubio', 'moreno', 'castany');
         $namesG = array('si', 'no');
         $namesS = array('hombre', 'mujer');
@@ -198,15 +200,14 @@ echo"<form method='post' name='formulario'>";
                 }
               echo"</select>";
           echo"</div>";
-          echo"<input type='button' name='pregunta' value='Haz la pregunta' onclick='validarSelect()'>";
+          echo"<input type='button' name='pregunta' value='Haz la pregunta' onclick='validarSelect(); mensajeAviso();'>";
           echo"</form>";
           echo"<p class='contadorPregunta' id='contadorPregunta'>Contador: 0</p>";
-          echo"<div class='mensajeCorrecto'>";
+
           echo"<p id='mensajeCorrecto'></p>";
-          echo"</div>";
-          echo"<div class='mensajeError'>";
+
           echo"<p id='mensajeError'></p>";
-          echo"</div>";
+
         echo"</div>";
         echo"<input id='botoneasy' class='boton1' type='button' name='easy' value='MODO EASY'>";
     }

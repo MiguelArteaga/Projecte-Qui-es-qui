@@ -130,40 +130,43 @@ function validarPregunta(){
   	
 	if(selectCabello.value==hair){
 		document.getElementById("mensajeCorrecto").innerText = "Sí, tiene el color de pelo "+hair+".";
-		document.getElementById("mensajeCorrecto").style.background ="#97f087";
+		document.getElementById("mensajeError").innerText = "";
 		contador=contador+1;
 		document.getElementById("contadorPregunta").innerText = "Contador: "+contador;
 		document.getElementById('OptCabello').value = 0;
-
+		desactivarColorIncorrecto()
+		activarColorCorrecto();
 	}
 	else if(selectGafas.value==glasses){
 		document.getElementById("mensajeCorrecto").innerText = glasses+" tiene gafas esta persona.";
-		document.getElementById("mensajeCorrecto").style.background ="#97f087";
+		
 		contador=contador+1;
 		document.getElementById("contadorPregunta").innerText = "Contador: "+contador;
 		document.getElementById('OptGafas').value = 0;
-
+		document.getElementById("mensajeError").innerText = "";
+		desactivarColorIncorrecto()
+		activarColorCorrecto();
 	}
 	else if(selectSexo.value==gender){
 		document.getElementById("mensajeCorrecto").innerText = "Sí, es "+gender+".";
-		document.getElementById("mensajeCorrecto").style.background ="#97f087";
+		document.getElementById("mensajeError").innerText = "";
 		contador=contador+1;
 		document.getElementById("contadorPregunta").innerText = "Contador: "+contador;
 		document.getElementById('OptSexo').value = 0;
+		desactivarColorIncorrecto()
+		activarColorCorrecto();
 	}else{
-
-		document.getElementById("mensajeCorrecto").innerText = "No tiene esa caracteristica.";
-		document.getElementById("mensajeCorrecto").style.background ="#f1948a";
-
+		document.getElementById("mensajeError").innerText = "No es tiene esa caracteristica.";
 		document.getElementById('OptCabello').value = 0;
-    	document.getElementById('OptGafas').value = 0;
+		document.getElementById('OptGafas').value = 0;
     	document.getElementById('OptSexo').value = 0;
     	contador=contador+1;
     	document.getElementById("contadorPregunta").innerText = "Contador: "+contador;
+    	activarColorIncorrecto()
+    	document.getElementById("mensajeCorrecto").innerText ="";
+    	desactivarColorCorrecto()
 	}
-
-
-
+	desactivarColorIncorrecto()
 }
 function pedirnombre() {
     var person = prompt("Introduce tu nombre", "Nombre");
@@ -308,4 +311,16 @@ function set_width() {
 	swide=document.body.clientWidth;
 	shigh=document.body.clientHeight;
 	}
+}
+function activarColorCorrecto(){
+	document.getElementById("mensajeCorrecto").className='animacion';
+}
+function desactivarColorCorrecto(){
+	document.getElementById("mensajeCorrecto").className='';
+}
+function activarColorIncorrecto(){
+	document.getElementById("mensajeError").className='animacion';
+}
+function desactivarColorIncorrecto(){
+	document.getElementById("mensajeError").className='';
 }

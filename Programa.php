@@ -144,7 +144,7 @@
     foreach ($img as $fotos) {
       if( substr($fotos,-3)=="jpg" or substr($fotos,-3)=="png" or substr($fotos,-4)=="jpeg"){
         echo"<div class='fondoImg'>";
-        echo "<div id='$arrayId[$i]' onclick='girar(this.id)' class='$arrayDiv[$i]'>";
+        echo "<div id='$arrayId[$i]' class='$arrayDiv[$i]' onclick='girar(this.id)'>";
         echo "<div><img id='$fotos' onclick='nombreCartas(this.id)' src='imagenes/$fotos' width='100' height='100'></div>";
         echo "<div class='back'><img src='imagenes2/reversos.jpg' width='100' height='100'></div>";
         echo "</div>";
@@ -209,7 +209,9 @@ echo"<form method='post' name='formulario'>";
           echo"<p id='mensajeError'></p>";
 
         echo"</div>";
-        echo"<input id='botoneasy' class='boton1' type='button' name='easy' value='MODO EASY'>";
+        echo"<p id='botoneasyid'>";
+        echo"<input id='botoneasy' onclick='modoeasy()' class='boton1' type='button' name='easy' value='MODO EASY'>";
+        echo"</p>";
     }
     ?>
     <script type="text/javascript">

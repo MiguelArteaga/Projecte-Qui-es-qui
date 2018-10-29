@@ -156,7 +156,7 @@ function validarPregunta(){
 		desactivarColorIncorrecto()
 		activarColorCorrecto();
 	}else{
-		document.getElementById("mensajeError").innerText = "No es tiene esa caracteristica.";
+		document.getElementById("mensajeError").innerText = "No tiene esa caracteristica.";
 		document.getElementById('OptCabello').value = 0;
 		document.getElementById('OptGafas').value = 0;
     	document.getElementById('OptSexo').value = 0;

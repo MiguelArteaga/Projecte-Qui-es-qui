@@ -15,6 +15,7 @@
     $Carac = array();
     //Nuevo!
     $arraycaract=file('config.txt');
+
     $caractconfig=array();
     $caractconfig2=array();
     $caractimatges=array();
@@ -165,7 +166,21 @@
         }
     }
     }
+    # Array general del archivo config.
+    $longitudCaract = count($arraycaract);
+    $GeneralConfig = array();
+    for($c=0;$c<$longitudCaract;$c++){
+      $datos = explode(":", $arraycaract[$c]);
+      array_push($GeneralConfig, $datos);
+    }
+    # Array de los titulos para los select.
+    $Titulos = array();
+    $longGnlConfig = count($GeneralConfig);
+    for($p=0;$p<$longGnlConfig;$p++){
+      array_push($Titulos, $GeneralConfig[$p][0]);
+    }
     
+
       $namesC = array('rubio', 'moreno', 'castany');
         $namesG = array('si', 'no');
         $namesS = array('hombre', 'mujer');

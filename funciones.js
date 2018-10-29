@@ -3,18 +3,27 @@ arrayNombreCartas=[];
 var sonidocarta= new Audio('sonido/mariosalto.mp3');
 var gameover= new Audio('sonido/gameover.mp3');
 var gamewin= new Audio('sonido/gamewin.mp3');
-
+var CartaGirada=0;
+var arrayclasses=[];
+var contadorfinal=0;
 
 
 
 function girar(id){
 	document.getElementById(id).addEventListener('click',girarcarta);
 	girarcarta(id);
-
+	if (arrayclasses.includes(id)==false){
+		arrayclasses.push(id);
+		contadorfinal=contadorfinal+1;
+	}
+	if(contadorfinal==11){
+		finalJuego();
+	}
+	
 
 }
 
-var CartaGirada=0;
+
 function girarcarta(id2){
 	CartaGirada+=1;
 	document.getElementById(id2).classList.add('flipped');
@@ -23,9 +32,7 @@ function girarcarta(id2){
 
 function nombreCartas(id){
 	arrayNombreCartas.push(id);
-	if (arrayNombreCartas.length==11){
-		finalJuego();
-	}
+	
 }
 
 function finalJuego(){
@@ -79,13 +86,16 @@ function validarSelect(){
   	}
  	else{
  		validarPregunta();
- 		document.getElementById('botoneasy').disabled=true;
- 		
-
+ 		document.getElementById('botoneasyid').innerText="";
  	}
 
 
 }
+
+function modoeasy(){
+	document.getElementById('botoneasy').disabled=true;
+}
+
 var contador = 0;
 var PreguntaHecha = 0;
 var CartaNoGirada =0;

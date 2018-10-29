@@ -145,15 +145,16 @@
     foreach ($img as $fotos) {
       if( substr($fotos,-3)=="jpg" or substr($fotos,-3)=="png" or substr($fotos,-4)=="jpeg"){
         echo"<div class='fondoImg'>";
+
         echo "<div id='$arrayId[$i]' onclick='girar(this.id)' class='$arrayDiv[$i]'>";
-        echo "<div><img id='$fotos' onclick='nombreCartas(this.id)' src='imagenes/$fotos' width='100' height='100'></div>";
-        echo "<div class='back'><img src='imagenes2/reversos.jpg' width='100' height='100'></div>";
+        echo "<div><img class='imgfront' id='$fotos' onclick='nombreCartas(this.id)' src='imagenes/$fotos' width='100' height='100'></div>";
+        echo "<div class='back'><img class='imgback'src='imagenes2/reversos.jpg' width='100' height='100'></div>";
         echo "</div>";
         echo"</div>";
         $i=$i+1;
         if ($cartaoculta==$fotos) {
           echo "<div id='id13' class='divoculta'>";
-          echo "<div><img src='imagenes2/reversos.jpg' width='120' height='120'></div>";
+          echo "<div><img class='imgback'src='imagenes2/reversos.jpg' width='150' height='150'></div>";
           for($o=0;$o<12;$o++){
             if($cartaoculta==$arrayNombres[$o]){
               $AtCabello = $AtributosCabello[$o][$y];
@@ -161,7 +162,7 @@
               $AtSexo = $AtributosSexo[$o][$y];
             }
           }
-          echo"<div class='back'><img id='cartaOculta' src='imagenes/$fotos' width='150' height='150' cabello='$AtCabello' gafas='$AtGafas' sexo='$AtSexo'></div>";
+          echo"<div class='back'><img class='imgfront' id='cartaOculta' src='imagenes/$fotos' width='160' height='150' cabello='$AtCabello' gafas='$AtGafas' sexo='$AtSexo'></div>";
           echo "</div>";
         }
     }
@@ -224,7 +225,9 @@ echo"<form method='post' name='formulario'>";
           echo"<p id='mensajeError'></p>";
 
         echo"</div>";
-        echo"<input id='botoneasy' class='boton1' type='button' name='easy' value='MODO EASY'>";
+        echo"<p id='botoneasyid'>";
+        echo"<input id='botoneasy' onclick='modoeasy()' class='boton1' type='button' name='easy' value='MODO EASY'>";
+        echo"</p>";
     }
     ?>
     <script type="text/javascript">

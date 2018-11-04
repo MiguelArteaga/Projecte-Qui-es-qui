@@ -69,22 +69,11 @@ function finalJuego(){
 
 
 function validarSelect(){
-	var selectCabello = document.getElementById("OptCabello");
-	var selectGafas = document.getElementById("OptGafas");
-	var selectSexo = document.getElementById("OptSexo");
+	var selectCombo = document.getElementById("ComboUnico");
 
-	if(selectCabello.value ==0 && selectGafas.value==0 && selectSexo.value==0){
+	if(selectCombo.value ==0){
     	document.getElementById("mensajeError").innerText = "¡Selecciona al menos una pregunta!";
-		
- 	}else if(selectCabello.value!=0 && selectGafas.value!=0 || selectGafas.value!=0 && selectSexo.value!=0 || selectSexo.value!=0 && selectCabello.value!=0){
-    	document.getElementById("mensajeError").innerText = "No puedes usar más de un pregunta a la vez.";
-		document.getElementById("mensajeCorrecto").innerText = "";
-
-		document.getElementById('OptCabello').value = 0;
-    	document.getElementById('OptGafas').value = 0;
-    	document.getElementById('OptSexo').value = 0;
-  	}
- 	else{
+ 	}else{
  		validarPregunta();
  		document.getElementById('botoneasyid').innerText="";
  	}
@@ -127,6 +116,7 @@ function validarPregunta(){
 	var hair = elementoAtrib.getAttribute("cabello");
 	var glasses = elementoAtrib.getAttribute("gafas");
 	var gender = elementoAtrib.getAttribute("sexo");
+	var selectCombo = document.getElementById("ComboUnico");
 	
 	if(gender=="hombre<br"){
 		gender="hombre";
@@ -134,42 +124,33 @@ function validarPregunta(){
 	else if(gender=="mujer<br"){
 		gender="mujer";
 	}
-	var selectCabello = document.getElementById("OptCabello");
-	var selectGafas = document.getElementById("OptGafas");
-	var selectSexo = document.getElementById("OptSexo");
-  	
-	if(selectCabello.value==hair){
+	if(selectCombo.value==hair){
 		document.getElementById("mensajeCorrecto").innerText = "Sí, tiene el color de pelo "+hair+".";
 		document.getElementById("mensajeError").innerText = "";
 		contador=contador+1;
 		document.getElementById("contadorPregunta").innerText = "Contador: "+contador;
-		document.getElementById('OptCabello').value = 0;
+		document.getElementById('ComboUnico').value = 0;
 		desactivarColorIncorrecto()
 		activarColorCorrecto();
-	}
-	else if(selectGafas.value==glasses){
+	}else if(selectCombo.value==glasses){
 		document.getElementById("mensajeCorrecto").innerText = glasses+" tiene gafas esta persona.";
-		
 		contador=contador+1;
 		document.getElementById("contadorPregunta").innerText = "Contador: "+contador;
-		document.getElementById('OptGafas').value = 0;
+		document.getElementById('ComboUnico').value = 0;
 		document.getElementById("mensajeError").innerText = "";
 		desactivarColorIncorrecto()
 		activarColorCorrecto();
-	}
-	else if(selectSexo.value==gender){
+	}else if(selectCombo.value==gender){
 		document.getElementById("mensajeCorrecto").innerText = "Sí, es "+gender+".";
 		document.getElementById("mensajeError").innerText = "";
 		contador=contador+1;
 		document.getElementById("contadorPregunta").innerText = "Contador: "+contador;
-		document.getElementById('OptSexo').value = 0;
+		document.getElementById('ComboUnico').value = 0;
 		desactivarColorIncorrecto()
 		activarColorCorrecto();
 	}else{
 		document.getElementById("mensajeError").innerText = "No tiene esa caracteristica.";
-		document.getElementById('OptCabello').value = 0;
-		document.getElementById('OptGafas').value = 0;
-    	document.getElementById('OptSexo').value = 0;
+		document.getElementById('ComboUnico').value = 0;
     	contador=contador+1;
     	document.getElementById("contadorPregunta").innerText = "Contador: "+contador;
     	activarColorIncorrecto()

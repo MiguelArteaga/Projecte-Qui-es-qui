@@ -167,57 +167,40 @@
         }
     }
     }
-    # Array general del archivo config.
-    $longitudCaract = count($arraycaract);
+  $Config = fopen("config.txt", "r");
+    $Conf = array();
     $GeneralConfig = array();
-    for($c=0;$c<$longitudCaract;$c++){
-      $datos = explode(":", $arraycaract[$c]);
-      array_push($GeneralConfig, $datos);
+    $Atributos= array();
+    $Nombres = array();
+    while(!feof($Config)){
+        $linea=fgets($Config);
+        array_push($Conf, $linea);
     }
-    # Array de los titulos para los select.
-    $Titulos = array();
-    $longGnlConfig = count($GeneralConfig);
-    for($p=0;$p<$longGnlConfig;$p++){
-      array_push($Titulos, $GeneralConfig[$p][0]);
+    fclose($Config);
+    for($w=0;$w<count($Conf);$w++){
+        $Nombre = explode(":", $Conf[$w]);
+        $Atributo = explode(" ",$Nombre[1]);
+        array_push($Nombres, $Nombre[0]);
+        array_push($Atributos, $Atributo);  
     }
-    
-
-      $namesC = array('rubio', 'moreno', 'castany');
-        $namesG = array('si', 'no');
-        $namesS = array('hombre', 'mujer');
-        $longC = count($namesC);
-        $longGS = count($namesG);
-echo"<form method='post' name='formulario'>";
-        echo"<div class='general'>";
-          echo"<div class='caja1'>";
-          echo"<p>¿Color de pelo?</p>";
-            echo"<select name='OptCabello' id='OptCabello'>";
-                echo"<option value='0'>--Selecciona--</option>";
-              for($e=0;$e<$longC;$e++){
-                echo"<option value='$namesC[$e]'>$namesC[$e]</option>";
-              }
-            echo"</select>";
-          echo"</div>";
-          echo"<div class='caja2'>";
-          echo"<p>¿Tiene gafas?</p>";
-            echo"<select name='OptGafas' id='OptGafas'>";
-                echo"<option value='0'>--Selecciona--</option>";
-              for($e=0;$e<$longGS;$e++){
-                echo"<option value='$namesG[$e]'>$namesG[$e]</option>";
-              }
-            echo"</select>";
-          echo"</div>";
-          echo"<div class='caja3'>";
-          echo"<p>¿Género?</p>";
-              echo"<select name='OptSexo' id='OptSexo'>";
-                  echo"<option value='0'>--Selecciona--</option>";
-                for($i=0;$i<$longGS;$i++){
-                  echo"<option value='$namesS[$i]'>$namesS[$i]</option>";
-                }
-              echo"</select>";
-          echo"</div>";
-          echo"<input type='button' name='pregunta' value='Haz la pregunta' onclick='validarSelect(); mensajeAviso();'>";
-          echo"</form>";
+    $longAtributos = count($Atributos);
+    echo"<form method='post' name='formulario'>";
+    echo"<div class='general'>";
+        echo"<div class='caja1'>";
+        echo"<p>Elige una pregunta.</p>";
+        echo"<select name='ComboUnico' id='ComboUnico'>";
+            echo"<option value='0'>-- Selecciona --</option>";
+            echo'<option value='.$Nombres[0].'>¿Tiene '.$Nombres[0].'?</option>';
+            for($w=0;$w<$longAtributos;$w++){
+                echo'<option value='.$Atributos[1][$w].'>¿Es '.$Atributos[1][$w].'?</option>';
+            }
+            for($y=0;$y<$longAtributos-1;$y++){
+                echo'<option value='.$Atributos[2][$y].'>¿Es '.$Atributos[2][$y].'?</option>';
+            }
+        echo"</select>";
+        echo"</div>";
+        echo"<input type='button' name='pregunta' value='Haz la pregunta' onclick='validarSelect(); mensajeAviso();'>";
+    echo"</form>";
           echo"<p class='contadorPregunta' id='contadorPregunta'>Contador: 0</p>";
 
           echo"<p id='mensajeCorrecto'></p>";

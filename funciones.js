@@ -108,6 +108,8 @@ function confirmarMensajeAviso(){
 	}else{
 		contador=contador-1;
 		document.getElementById("contadorPregunta").innerText = "Contador: "+contador;
+		document.getElementById("mensajeError").innerText = "";
+		document.getElementById("mensajeCorrecto").innerText ="";
 	}
 }
 

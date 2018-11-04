@@ -199,7 +199,7 @@
             }
         echo"</select>";
         echo"</div>";
-        echo"<input type='button' name='pregunta' value='Haz la pregunta' onclick='validarSelect(); mensajeAviso();'>";
+        echo"<input type='button' name='pregunta' id='pregunta' value='Haz la pregunta' onclick='validarSelect(); mensajeAviso();'>";
     echo"</form>";
           echo"<p class='contadorPregunta' id='contadorPregunta'>Contador: 0</p>";
 

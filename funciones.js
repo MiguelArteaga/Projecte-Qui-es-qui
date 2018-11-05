@@ -3,15 +3,24 @@ arrayNombreCartas=[];
 var sonidocarta= new Audio('sonido/mariosalto.mp3');
 var gameover= new Audio('sonido/gameover.mp3');
 var gamewin= new Audio('sonido/gamewin.mp3');
+var easteregg= new Audio('sonido/aplausos.mp3');
 var CartaGirada=0;
 var arrayclasses=[];
 var contadorfinal=0;
-
+var arraycartas2=[];
+var arraycartas3=[];
+var arraycartas4=[];
+var arraycartasnombre2=[];
+var arraycarac=[];
+var arraycarac2=[];
+var contadoreaster=0;
+var variablemodoeasy=0;
 
 
 function girar(id){
 	document.getElementById(id).addEventListener('click',girarcarta);
 	girarcarta(id);
+	
 	if (arrayclasses.includes(id)==false){
 		arrayclasses.push(id);
 		contadorfinal=contadorfinal+1;
@@ -19,8 +28,13 @@ function girar(id){
 	if(contadorfinal==11){
 		finalJuego();
 	}
-	
-
+	if(id=="rafa.jpg"){
+		contadoreaster=contadoreaster+1;
+	}
+	if(contadoreaster==10){
+		easteregg.play();
+		document.getElementById('oculto').innerText="Creadores Del Juego: Cristian Salinas, Marcos Arteaga y Miguel Arteaga";
+	}
 }
 
 
@@ -50,7 +64,7 @@ function finalJuego(){
 
 	var UltimaCarta=arrayNombresCartas2.filter(Boolean);
 	girarcarta('id13');
-	if(UltimaCarta==CartaOculta){
+	if(UltimaCarta[0]==CartaOculta){
 		document.getElementById('p1prova').innerHTML="HAS GANADO!";
 		fartificiales();
 		gamewin.play();
@@ -65,7 +79,15 @@ function finalJuego(){
 	}
 
 }
+function activarmodoeasy(){
+	variablemodoeasy=1;
+	document.getElementById('selectmodos').disabled=true;
+}
 
+function activarmodoveryeasy(){
+	variablemodoeasy=1;
+	document.getElementById('selectmodos').disabled=true;
+}
 
 
 function validarSelect(){
@@ -74,15 +96,109 @@ function validarSelect(){
 	if(selectCombo.value ==0){
     	document.getElementById("mensajeError").innerText = "¡Selecciona al menos una pregunta!";
  	}else{
- 		validarPregunta();
+ 		if(variablemodoeasy==1){
+ 			modoeasy2();
+ 		}
+ 		else{
+ 			validarPregunta();
+ 		}
+ 		
  		document.getElementById('botoneasyid').innerText="";
+ 		document.getElementById('p2prova').innerText=variablemodoeasy;
+ 		
  	}
 
 
 }
-
+function modoeasy2(){
+	modoeasy();
+ 	validarPregunta();
+}
 function modoeasy(){
-	document.getElementById('botoneasy').disabled=true;
+	var elementoAtrib = document.querySelector('#cartaOculta');
+	var hair = elementoAtrib.getAttribute("cabello");
+	var glasses = elementoAtrib.getAttribute("gafas");
+	var gender = elementoAtrib.getAttribute("sexo");
+
+	var selectCabello = document.getElementById("OptCabello");
+	var selectGafas = document.getElementById("OptGafas");
+	var selectSexo = document.getElementById("OptSexo");
+	if(gender=="hombre<br"){
+		gender="hombre";
+	}
+	else if(gender=="mujer<br"){
+		gender="mujer";
+	}
+	
+	for(var i=0;i<arraycartas.length;i++){
+		arraycartas2=String(arraycartas[i]).split(",");
+		arraycartas3=arraycartas2.filter(Boolean);
+		arraycartas4.push(arraycartas3);
+	}
+	for (var i=0;i<arraycartasnombres.length;i++){
+		arraycartasnombre2.push(arraycartasnombres[i][0]);
+	}
+	
+	for(var i=0;i<arraycartas4.length;i++){
+		arraycarac=String(arraycartas4[i]).split(",");
+		arraycarac2.push(arraycarac);
+	}
+	for(var i=0;i<arraycarac2.length;i++){
+		arraycarac2[i].push(arraycartasnombre2[i]);
+	}
+	
+	
+
+	if(selectCabello.value!=0){
+		for (var i=0;i<arraycarac2.length;i++){
+			if(hair!=arraycarac2[i][3]){
+				if(arraycarac2[i][3]==selectCabello.value){
+					girar(arraycarac2[i][7]);
+				}
+				else if(hair==selectCabello.value){
+					if(hair!=arraycarac2[i][3]){
+						girar(arraycarac2[i][7]);
+					}
+				}
+			}
+		}	
+	}
+	//document.getElementById('OptCabello').value = 0;
+	else if(selectGafas.value!=0){
+		for (var i=0;i<arraycarac2.length;i++){
+			if(glasses!=arraycarac2[i][1]){
+				if(arraycarac2[i][1]==selectGafas.value){
+					girar(arraycarac2[i][7]);
+				}
+				else if(arraycarac2[i][1]!=glasses){
+					girar(arraycarac2[i][7]);
+				}
+				
+			}
+		}
+	}
+	//document.getElementById('OptGafas').value = 0;
+	else if (selectSexo.value!=0) {
+		for (var i=0;i<arraycarac2.length;i++){
+			if(arraycarac2[i][5]=="hombre<br"){
+				gender2="hombre";
+			}
+			else if(arraycarac2[i][5]=="mujer<br"){
+				gender2="mujer";
+			}
+			if(gender!=gender2){
+				if(gender2==selectSexo.value){
+					girar(arraycarac2[i][7]);
+				}
+				else if(gender2!=gender){
+					girar(arraycarac2[i][7]);
+				}
+				
+			}
+		}
+	}
+	//document.getElementById('OptSexo').value = 0;
+	
 }
 
 var contador = 0;
@@ -150,37 +266,6 @@ function validarPregunta(){
 		document.getElementById('ComboUnico').value = 0;
 		desactivarColorIncorrecto()
 		activarColorCorrecto();
-	}else{
-
-		if(selectCombo.value!=hair){
-			document.getElementById("mensajeError").innerText = "No tiene el color de pelo "+selectCombo.value+".";
-			document.getElementById('ComboUnico').value = 0;
-	    	contador=contador+1;
-	    	document.getElementById("contadorPregunta").innerText = "Contador: "+contador;
-	    	activarColorIncorrecto();
-	    	document.getElementById("mensajeCorrecto").innerText ="";
-	    	desactivarColorCorrecto();
-		}
-		else if(selectCombo.value!=glasses){
-			document.getElementById("mensajeError").innerText = "No tiene gafas.";
-			document.getElementById('ComboUnico').value = 0;
-	    	contador=contador+1;
-	    	document.getElementById("contadorPregunta").innerText = "Contador: "+contador;
-	    	activarColorIncorrecto();
-	    	document.getElementById("mensajeCorrecto").innerText ="";
-	    	desactivarColorCorrecto();
-		}
-		else if(selectCombo.value!=gender){
-			document.getElementById("mensajeError").innerText = "No es"+selectCombo.value+".";
-			document.getElementById('ComboUnico').value = 0;
-	    	contador=contador+1;
-	    	document.getElementById("contadorPregunta").innerText = "Contador: "+contador;
-	    	activarColorIncorrecto();
-	    	document.getElementById("mensajeCorrecto").innerText ="";
-	    	desactivarColorCorrecto();
-		}
-		
-
 	}
 	desactivarColorIncorrecto()
 }

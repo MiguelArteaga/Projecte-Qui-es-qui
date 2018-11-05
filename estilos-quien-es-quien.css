@@ -16,7 +16,15 @@
     color: white;
 
 }
+.ocultoclass{
+    position: absolute;
+    top:5%;
+    left: 80%;
+    color: white;
+    border-left: 80%;
+    font-size: 150%;
 
+}
 .divoculta {
     width:  15%;
     height:  10%;

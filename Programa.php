@@ -6,6 +6,7 @@
   </head>
 
   <body>
+  <p id="oculto" class="ocultoclass"></p>
   <p id="p1prova" class="p1pro" ></p>
     <?php
     #Arrays que usaremos
@@ -144,7 +145,7 @@
     
     foreach ($img as $fotos) {
       if( substr($fotos,-3)=="jpg" or substr($fotos,-3)=="png" or substr($fotos,-4)=="jpeg"){
-        echo "<div id='$arrayId[$i]' onclick='girar(this.id)' class='$arrayDiv[$i]'>";
+        echo "<div id='$fotos' onclick='girar(this.id)' class='$arrayDiv[$i]'>";
         echo "<div><img class='imgfront' id='$fotos' onclick='nombreCartas(this.id)' src='imagenes/$fotos' width='100' height='100'></div>";
         echo "<div class='back'><img class='imgback'src='imagenes2/reversos.jpg' width='100' height='100'></div>";
         echo "</div>";
@@ -207,14 +208,18 @@
 
         echo"</div>";
         echo"<p id='botoneasyid'>";
-        echo"<input id='botoneasy' onclick='modoeasy()' class='boton1' type='button' name='easy' value='MODO EASY'>";
+        echo"<select name='modos' id='selectmodos'>";
+          echo"<option value='1' onclick='activarmodoeasy()'>Modo Easy</option>";
+          echo"<option value='2' onclick='activarmodoveryeasy()' >Very Easy</option>";
+        echo"</select>";
         echo"</p>";
     }
     ?>
     <script type="text/javascript">
       var CartaOculta='<?php echo $cartaoculta;?>'
       var arrayNombresCartas2=<?php echo json_encode($img);?>;
-
+      var arraycartas=<?php echo json_encode($caractimatges2);?>;
+      var arraycartasnombres=<?php echo json_encode($arrayGeneral);?>;
 
       // Fuegos artificiales
 

@@ -188,8 +188,8 @@
     echo"<div class='general'>";
         echo"<div class='caja1'>";
         echo"<p>Elige una pregunta.</p>";
-        echo"<select name='ComboUnico' id='ComboUnico'>";
-            echo"<option value='0'>-- Selecciona --</option>";
+        echo"<select name='ComboUnico' id='ComboUnico' required onchange='habilitarBotonPregunta()'>";
+            echo"<option value='' name='selecciona'>-- Selecciona --</option>";
             echo'<option value='.$Nombres[0].'>¿Tiene '.$Nombres[0].'?</option>';
             for($w=0;$w<$longAtributos;$w++){
                 echo'<option value='.$Atributos[1][$w].'>¿Es '.$Atributos[1][$w].'?</option>';
@@ -199,7 +199,7 @@
             }
         echo"</select>";
         echo"</div>";
-        echo"<input type='button' name='pregunta' id='pregunta' value='Haz la pregunta' onclick='validarSelect(); mensajeAviso();'>";
+        echo"<input type='button' id='pregunta' disabled value='Haz la pregunta' onclick='validarSelect(); mensajeAviso();'>";
     echo"</form>";
           echo"<p class='contadorPregunta' id='contadorPregunta'>Contador: 0</p>";
 

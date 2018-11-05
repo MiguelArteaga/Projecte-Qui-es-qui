@@ -138,7 +138,7 @@ function validarPregunta(){
 		document.getElementById("mensajeCorrecto").innerText = glasses+" tiene gafas esta persona.";
 		contador=contador+1;
 		document.getElementById("contadorPregunta").innerText = "Contador: "+contador;
-		document.getElementById('ComboUnico').value = 0;
+		document.getElementById('ComboUnico').value =0;
 		document.getElementById("mensajeError").innerText = "";
 		desactivarColorIncorrecto()
 		activarColorCorrecto();
@@ -158,6 +158,7 @@ function validarPregunta(){
     	activarColorIncorrecto()
     	document.getElementById("mensajeCorrecto").innerText ="";
     	desactivarColorCorrecto()
+
 	}
 	desactivarColorIncorrecto()
 }
@@ -316,4 +317,9 @@ function activarColorIncorrecto(){
 }
 function desactivarColorIncorrecto(){
 	document.getElementById("mensajeError").className='';
+}
+function habilitarBotonPregunta(){
+	var ComboUnico = document.getElementById("ComboUnico");
+	var boton = document.getElementById("pregunta");
+	boton.disabled = !ComboUnico.value;
 }

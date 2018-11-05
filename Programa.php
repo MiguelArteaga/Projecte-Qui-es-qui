@@ -144,13 +144,10 @@
     
     foreach ($img as $fotos) {
       if( substr($fotos,-3)=="jpg" or substr($fotos,-3)=="png" or substr($fotos,-4)=="jpeg"){
-        echo"<div class='fondoImg'>";
-
         echo "<div id='$arrayId[$i]' onclick='girar(this.id)' class='$arrayDiv[$i]'>";
         echo "<div><img class='imgfront' id='$fotos' onclick='nombreCartas(this.id)' src='imagenes/$fotos' width='100' height='100'></div>";
         echo "<div class='back'><img class='imgback'src='imagenes2/reversos.jpg' width='100' height='100'></div>";
         echo "</div>";
-        echo"</div>";
         $i=$i+1;
         if ($cartaoculta==$fotos) {
           echo "<div id='id13' class='divoculta'>";
@@ -201,8 +198,9 @@
         echo"</div>";
         echo"<input type='button' id='pregunta' disabled value='Haz la pregunta' onclick='validarSelect(); mensajeAviso();'>";
     echo"</form>";
+        echo"<div class='caja1'";
           echo"<p class='contadorPregunta' id='contadorPregunta'>Contador: 0</p>";
-
+        echo"</div>";
           echo"<p id='mensajeCorrecto'></p>";
 
           echo"<p id='mensajeError'></p>";

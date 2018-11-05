@@ -151,13 +151,35 @@ function validarPregunta(){
 		desactivarColorIncorrecto()
 		activarColorCorrecto();
 	}else{
-		document.getElementById("mensajeError").innerText = "No tiene esa caracteristica.";
-		document.getElementById('ComboUnico').value = 0;
-    	contador=contador+1;
-    	document.getElementById("contadorPregunta").innerText = "Contador: "+contador;
-    	activarColorIncorrecto()
-    	document.getElementById("mensajeCorrecto").innerText ="";
-    	desactivarColorCorrecto()
+
+		if(selectCombo.value!=hair){
+			document.getElementById("mensajeError").innerText = "No tiene el color de pelo "+selectCombo.value+".";
+			document.getElementById('ComboUnico').value = 0;
+	    	contador=contador+1;
+	    	document.getElementById("contadorPregunta").innerText = "Contador: "+contador;
+	    	activarColorIncorrecto();
+	    	document.getElementById("mensajeCorrecto").innerText ="";
+	    	desactivarColorCorrecto();
+		}
+		else if(selectCombo.value!=glasses){
+			document.getElementById("mensajeError").innerText = "No tiene gafas.";
+			document.getElementById('ComboUnico').value = 0;
+	    	contador=contador+1;
+	    	document.getElementById("contadorPregunta").innerText = "Contador: "+contador;
+	    	activarColorIncorrecto();
+	    	document.getElementById("mensajeCorrecto").innerText ="";
+	    	desactivarColorCorrecto();
+		}
+		else if(selectCombo.value!=gender){
+			document.getElementById("mensajeError").innerText = "No es"+selectCombo.value+".";
+			document.getElementById('ComboUnico').value = 0;
+	    	contador=contador+1;
+	    	document.getElementById("contadorPregunta").innerText = "Contador: "+contador;
+	    	activarColorIncorrecto();
+	    	document.getElementById("mensajeCorrecto").innerText ="";
+	    	desactivarColorCorrecto();
+		}
+		
 
 	}
 	desactivarColorIncorrecto()

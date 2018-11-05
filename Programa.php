@@ -26,8 +26,7 @@
     $Img = fopen("imatges.txt", "r") or die("Error al leer documento.");
     while(!feof($Img)){
       $linea=fgets($Img);
-      $saltodelinea=nl2br($linea);
-      array_push($arrayImg, $saltodelinea);
+      array_push($arrayImg, $linea);
     }
     fclose($Img);
     # Añadimos el fichero en un array
@@ -188,7 +187,8 @@
         echo"<p>Elige una pregunta.</p>";
         echo"<select name='ComboUnico' id='ComboUnico' required onchange='habilitarBotonPregunta()'>";
             echo"<option value='' name='selecciona'>-- Selecciona --</option>";
-            echo'<option value='.$Nombres[0].'>¿Tiene '.$Nombres[0].'?</option>';
+            echo'<option value='.$Atributos[0][0].'>¿Tiene '.$Nombres[0].'?</option>';
+            echo'<option value='.$Atributos[0][1].'>¿No tiene '.$Nombres[0].'?</option>';
             for($w=0;$w<$longAtributos;$w++){
                 echo'<option value='.$Atributos[1][$w].'>¿Es '.$Atributos[1][$w].'?</option>';
             }

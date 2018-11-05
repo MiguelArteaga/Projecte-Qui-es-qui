@@ -243,6 +243,7 @@ function validarPregunta(){
 		gender="mujer";
 	}
 	if(selectCombo.value==hair){
+		
 		document.getElementById("mensajeCorrecto").innerText = "Sí, tiene el color de pelo "+hair+".";
 		document.getElementById("mensajeError").innerText = "";
 		contador=contador+1;

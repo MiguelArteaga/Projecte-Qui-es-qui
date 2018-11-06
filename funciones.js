@@ -247,23 +247,32 @@ function validarPregunta(){
 		document.getElementById("mensajeError").innerText = "";
       	contador=contador+1;
       	document.getElementById("contadorPregunta").innerText = "Contador: "+contador;
+      	activarColorCorrecto();
+      	desactivarColorIncorrecto();
 	}else if(selectCombo.value==glasses){
 		document.getElementById("mensajeCorrecto").innerText = "Sí tiene gafas.";
 		document.getElementById("mensajeError").innerText = "";
       	contador=contador+1;
       	document.getElementById("contadorPregunta").innerText = "Contador: "+contador;
+      	activarColorCorrecto();
+      	desactivarColorIncorrecto();
 	}else if(selectCombo.value==hair){
 		document.getElementById("mensajeCorrecto").innerText = "Sí, tiene el color de pelo "+selectCombo.value+".";
 		document.getElementById("mensajeError").innerText = "";
       	contador=contador+1;
       	document.getElementById("contadorPregunta").innerText = "Contador: "+contador;
+      	activarColorCorrecto();
+      	desactivarColorIncorrecto();
 	}
 	else{
 		document.getElementById("mensajeError").innerText = "No tiene la caracteristica seleccionada.";
 	      document.getElementById("mensajeCorrecto").innerText = "";
 	      contador=contador+1;
 	      document.getElementById("contadorPregunta").innerText = "Contador: "+contador;
+	      activarColorIncorrecto();
+	      desactivarColorCorrecto();
 	}
+	desactivarColorIncorrecto()
 	
 }
 function pedirnombre() {

@@ -181,19 +181,31 @@
         array_push($Nombres, $Nombre[0]);
         array_push($Atributos, $Atributo);  
     }
-    $longAtributos = count($Atributos);
     echo"<form method='post' name='formulario'>";
     echo"<div class='general'>";
         echo"<div class='caja1'>";
         echo"<p>Elige una pregunta.</p>";
         echo"<select name='ComboUnico' id='ComboUnico' required onchange='habilitarBotonPregunta()'>";
             echo"<option value='' name='selecciona'>-- Selecciona --</option>";
-            echo'<option value='.$Atributos[0][0].'>¿Tiene '.$Nombres[0].'?</option>';
-            echo'<option value='.$Atributos[0][1].'>¿No tiene '.$Nombres[0].'?</option>';
-            for($w=0;$w<$longAtributos;$w++){
+            for($a=0;$a<count($Nombres);$a++){
+              for($b=0;$b<count($Atributos);$b++){
+                for($c=0;$c<count($Atributos[$b]);$c++){
+                  if($Nombres[$a]!='sexo' && $Nombres[$a]!='cabello'){
+                    if($Atributos[$b][$c]=='si'){
+                      echo'<option value='.$Atributos[$b][$c].'>¿Tiene '.$Nombres[$a].'?</option>';
+                    }else{
+                      echo'<option value='.$Atributos[$b][$c].'>¿No tiene '.$Nombres[$a].'?</option>';
+                    }
+
+                  }
+                }
+                 break;
+                }   
+              }
+            for($w=0;$w<count($Atributos);$w++){
                 echo'<option value='.$Atributos[1][$w].'>¿Es '.$Atributos[1][$w].'?</option>';
             }
-            for($y=0;$y<$longAtributos-1;$y++){
+            for($y=0;$y<count($Atributos)-1;$y++){
                 echo'<option value='.$Atributos[2][$y].'>¿Es '.$Atributos[2][$y].'?</option>';
             }
         echo"</select>";

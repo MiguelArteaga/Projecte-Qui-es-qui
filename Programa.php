@@ -123,6 +123,7 @@
     $AtributosGafas = array();
     $AtributosSexo = array();
     $logitudp = count($DatosPersonajes);
+
     #Creando array AtributosCabello
     for($c=0;$c<$logitudp;$c++){
       $DatosC = explode(" ", $DatosPersonajes[$c][1]);
@@ -141,7 +142,7 @@
     $y=2;
     $w=1;
     $i=0;
-    
+    print_r($AtributosCabello);
     foreach ($img as $fotos) {
       if( substr($fotos,-3)=="jpg" or substr($fotos,-3)=="png" or substr($fotos,-4)=="jpeg"){
         echo "<div id='$fotos' onclick='girar(this.id)' class='$arrayDiv[$i]'>";
@@ -164,7 +165,7 @@
         }
     }
     }
-  $Config = fopen("config.txt", "r");
+    $Config = fopen("config.txt", "r");
     $Conf = array();
     $GeneralConfig = array();
     $Atributos= array();

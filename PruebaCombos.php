@@ -7,6 +7,32 @@
 </head>
 <body>
 	<?php
+
+    $Imagenes = fopen("imatges.txt", "r");
+    $ImageInfo = array();
+    $ImageNombre = array();
+    $ImageDatos = array();
+
+    while(!feof($Imagenes)){
+      $linea=fgets($Imagenes);
+      array_push($ImageInfo, $linea);
+    }
+    
+    //print_r($Image);
+    for($a=0;$a<count($ImageInfo);$a++){
+      $Nombre = explode(":", $ImageInfo[$a]);
+      array_push($ImageNombre, $Nombre[0]);
+      $DatosSinEspacios = explode(" ",$Nombre[1]);
+      array_push($ImageDatos, $DatosSinEspacios);
+    }
+    for($x=0;$x<count($ImageDatos);$x++){
+      
+      
+      print_r($ImageDatos[$x]); echo"<br>";
+    }
+   
+    
+  /*
     $Config = fopen("config.txt", "r");
     $Conf = array();
     $GeneralConfig = array();
@@ -23,6 +49,7 @@
         array_push($Nombres, $Nombre[0]);
         array_push($Atributos, $Atributo);  
     }
+    
     print_r($Atributos[0][1]);
     $longAtributos = count($Atributos);
     echo"<form method='post' name='formulario'>";
@@ -47,5 +74,6 @@
     echo"<p id='mensajeCorrecto'></p>";
     echo"<p id='mensajeError'></p>";
     echo"</div>";
+    */
     ?>
 </html>

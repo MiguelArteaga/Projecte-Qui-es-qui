@@ -202,11 +202,11 @@
                  break;
                 }   
               }
-            for($w=0;$w<count($Atributos);$w++){
-                echo'<option value='.$Atributos[1][$w].'>¿Es '.$Atributos[1][$w].'?</option>';
+            for($w=0;$w<count($Atributos[1]);$w++){
+                echo'<option value='.rtrim($Atributos[1][$w]).'>¿Es '.rtrim($Atributos[1][$w]).'?</option>';
             }
-            for($y=0;$y<count($Atributos)-1;$y++){
-                echo'<option value='.$Atributos[2][$y].'>¿Es '.$Atributos[2][$y].'?</option>';
+            for($y=0;$y<count($Atributos[2]);$y++){
+                echo'<option value='.rtrim($Atributos[2][$y]).'>¿Es '.rtrim($Atributos[2][$y]).'?</option>';
             }
         echo"</select>";
         echo"</div>";

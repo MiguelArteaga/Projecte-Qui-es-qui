@@ -235,110 +235,36 @@ function validarPregunta(){
 	var glasses = elementoAtrib.getAttribute("gafas");
 	var gender = elementoAtrib.getAttribute("sexo");
 	var selectCombo = document.getElementById("ComboUnico");
-	if(selectCombo.value=='si'){
-		if(glasses==selectCombo.value){
-			document.getElementById("mensajeCorrecto").innerText = "Si tiene gafas.";
-			document.getElementById("mensajeError").innerText = null;
-			contador=contador+1;
-			document.getElementById("contadorPregunta").innerText = "Contador: "+contador;
-			document.getElementById('ComboUnico').value = 0;
-			desactivarColorIncorrecto()
-			activarColorCorrecto();
-		}else if(glasses=!'si'){
-			document.getElementById("mensajeError").innerText = "No tiene gafas.";
-			document.getElementById("mensajeCorrecto").innerText = "";
-			contador=contador+1;
-			document.getElementById("contadorPregunta").innerText = "Contador: "+contador;
-			//Llamar funcion se parpadeo rojo.
-		}
+	if(gender=="hombre<br"){
+		gender="hombre";
 	}
-	if(selectCombo.value=='moreno'){
-		if(hair==selectCombo.value){
-			document.getElementById("mensajeCorrecto").innerText = "Sí, tiene el color de pelo "+selectCombo.value+".";
-			document.getElementById("mensajeError").innerText = "";
-			contador=contador+1;
-			document.getElementById("contadorPregunta").innerText = "Contador: "+contador;
-			document.getElementById('ComboUnico').value = 0;
-			desactivarColorIncorrecto()
-			activarColorCorrecto();
-		}else if(hair!='moreno'){
-			document.getElementById("mensajeError").innerText = "No tiene el color de pelo "+selectCombo.value+".";
-			document.getElementById("mensajeCorrecto").innerText = "";
-			contador=contador+1;
-			document.getElementById("contadorPregunta").innerText = "Contador: "+contador;
-			//Llamar funcion se parpadeo rojo.
-		}
+	else if(gender=="mujer<br"){
+		gender="mujer";
 	}
-	if(selectCombo.value=='rubio'){
-		if(hair==selectCombo.value){
-			document.getElementById("mensajeCorrecto").innerText = "Sí, tiene el color de pelo "+selectCombo.value+".";
-			document.getElementById("mensajeError").innerText = "";
-			contador=contador+1;
-			document.getElementById("contadorPregunta").innerText = "Contador: "+contador;
-			document.getElementById('ComboUnico').value = 0;
-			desactivarColorIncorrecto()
-			activarColorCorrecto();
-		}else if(hair!='rubio'){
-			document.getElementById("mensajeError").innerText = "No tiene el color de pelo "+selectCombo.value+".";
-			document.getElementById("mensajeCorrecto").innerText = "";
-			contador=contador+1;
-			document.getElementById("contadorPregunta").innerText = "Contador: "+contador;
-			//Llamar funcion se parpadeo rojo.
-		}
+
+	if(selectCombo.value==gender){
+		document.getElementById("mensajeCorrecto").innerText = "Sí, es "+selectCombo.value+".";
+		document.getElementById("mensajeError").innerText = "";
+      	contador=contador+1;
+      	document.getElementById("contadorPregunta").innerText = "Contador: "+contador;
+	}else if(selectCombo.value==glasses){
+		document.getElementById("mensajeCorrecto").innerText = "Sí tiene gafas.";
+		document.getElementById("mensajeError").innerText = "";
+      	contador=contador+1;
+      	document.getElementById("contadorPregunta").innerText = "Contador: "+contador;
+	}else if(selectCombo.value==hair){
+		document.getElementById("mensajeCorrecto").innerText = "Sí, tiene el color de pelo "+selectCombo.value+".";
+		document.getElementById("mensajeError").innerText = "";
+      	contador=contador+1;
+      	document.getElementById("contadorPregunta").innerText = "Contador: "+contador;
 	}
-	if(selectCombo.value=='castany'){
-		if(hair==selectCombo.value){
-			document.getElementById("mensajeCorrecto").innerText = "Sí, tiene el color de pelo "+selectCombo.value+".";
-			document.getElementById("mensajeError").innerText = "";
-			contador=contador+1;
-			document.getElementById("contadorPregunta").innerText = "Contador: "+contador;
-			document.getElementById('ComboUnico').value = 0;
-			desactivarColorIncorrecto()
-			activarColorCorrecto();
-		}else if(hair!='castany'){
-			document.getElementById("mensajeError").innerText = "No tiene el color de pelo "+selectCombo.value+".";
-			document.getElementById("mensajeCorrecto").innerText = "";
-			contador=contador+1;
-			document.getElementById("contadorPregunta").innerText = "Contador: "+contador;
-			//Llamar funcion se parpadeo rojo.
-		}
-	}
-	if(selectCombo.value=='hombre'){
-		if(gender==selectCombo.value){
-			document.getElementById("mensajeCorrecto").innerText = "Sí, es "+selectCombo.value+".";
-			document.getElementById("mensajeError").innerText = "";
-			contador=contador+1;
-			document.getElementById("contadorPregunta").innerText = "Contador: "+contador;
-			document.getElementById('ComboUnico').value = 0;
-			desactivarColorIncorrecto()
-			activarColorCorrecto();
-		}else if(gender!='hombre'){
-			document.getElementById("mensajeError").innerText = "No es "+selectCombo.value+".";
-			document.getElementById("mensajeCorrecto").innerText = "";
-			contador=contador+1;
-			document.getElementById("contadorPregunta").innerText = "Contador: "+contador;
-			//Llamar funcion se parpadeo rojo.
-		}
-	}
-	if(selectCombo.value=='mujer'){
-		if(gender==selectCombo.value){
-			document.getElementById("mensajeCorrecto").innerText = "Sí, es "+selectCombo.value+".";
-			document.getElementById("mensajeError").innerText = "";
-			contador=contador+1;
-			document.getElementById("contadorPregunta").innerText = "Contador: "+contador;
-			document.getElementById('ComboUnico').value = 0;
-			desactivarColorIncorrecto()
-			activarColorCorrecto();
-		}else if(gender!='mujer'){
-			document.getElementById("mensajeError").innerText = "No es "+selectCombo.value+".";
-			document.getElementById("mensajeCorrecto").innerText = "";
-			contador=contador+1;
-			document.getElementById("contadorPregunta").innerText = "Contador: "+contador;
-			//Llamar funcion se parpadeo rojo.
-		}
+	else{
+		document.getElementById("mensajeError").innerText = "No tiene la caracteristica seleccionada.";
+	      document.getElementById("mensajeCorrecto").innerText = "";
+	      contador=contador+1;
+	      document.getElementById("contadorPregunta").innerText = "Contador: "+contador;
 	}
 	
-	desactivarColorIncorrecto()
 }
 function pedirnombre() {
     var person = prompt("Introduce tu nombre", "Nombre");

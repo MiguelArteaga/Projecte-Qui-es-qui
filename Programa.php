@@ -26,7 +26,8 @@
     $Img = fopen("imatges.txt", "r") or die("Error al leer documento.");
     while(!feof($Img)){
       $linea=fgets($Img);
-      array_push($arrayImg, $linea);
+      $saltodelinea=nl2br($linea);
+      array_push($arrayImg, $saltodelinea);
     }
     fclose($Img);
     # Añadimos el fichero en un array
@@ -142,7 +143,6 @@
     $y=2;
     $w=1;
     $i=0;
-    print_r($AtributosCabello);
     foreach ($img as $fotos) {
       if( substr($fotos,-3)=="jpg" or substr($fotos,-3)=="png" or substr($fotos,-4)=="jpeg"){
         echo "<div id='$fotos' onclick='girar(this.id)' class='$arrayDiv[$i]'>";

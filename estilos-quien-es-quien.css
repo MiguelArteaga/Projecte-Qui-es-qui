@@ -16,7 +16,7 @@ body{
 .ocultoclass{
     position: absolute;
     top:5%;
-    left: 80%;
+    left: 70%;
     color: white;
     border-left: 80%;
     font-size: 150%;
@@ -732,4 +732,14 @@ body{
         height:50%;
         bottom: -50px;
     }
+}
+
+.ranking{
+    width: 20%;
+    height: 25%;
+    top: 20%;
+    right: 5%;
+    position: absolute;
+    color: white;
+
 }

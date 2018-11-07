@@ -227,7 +227,36 @@
           echo"<option value='2' onclick='activarmodoveryeasy()' >Very Easy</option>";
         echo"</select>";
         echo"</p>";
+
+        #ranking 
+        echo "<div class='ranking'>";
+        $archivoran = fopen ("marcador.txt", "a");
+        $puntos=$_GET["w1"];
+        $nombre=$_GET["w2"];
+        fwrite($archivoran,$puntos." ".$nombre.PHP_EOL);
+        fclose ($archivoran);
+
+
+
+        $lineas;
+        $archivoran = fopen ("marcador.txt", "r");
+        $arrayMarcador=file("marcador.txt");
+
+        sort($arrayMarcador);
+        echo "<p>Ranking de ganadores</p>";
+        echo "<table border=1 height='200' width='400'>";
+        echo "<tr><td>Puntos         Jugadores</td></tr>";
+        foreach ($arrayMarcador as $value) {
+          echo "<tr>";
+          echo "<td>$value</td>";
+          echo "</tr>";
+        }
+        echo "</table>";
+        echo "</div>";
+
     }
+
+
     ?>
     <script type="text/javascript">
       var CartaOculta='<?php echo $cartaoculta;?>'

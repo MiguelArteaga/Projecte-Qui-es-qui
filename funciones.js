@@ -283,6 +283,14 @@ function validarPregunta(){
 }
 function pedirnombre() {
     var person = prompt("Introduce tu nombre", "Nombre");
+	var puntostr =contador.toString();
+	if (contador<=9) {
+		var puntuacion = 0+puntostr; 
+		window.location.href ="?w1=" +puntuacion+"&w2="+person; 
+	}else{
+		window.location.href ="?w1=" +contador+"&w2="+person; 
+		/*window.location.href ="w1?"+puntos&"w2="+person;*/ 
+	}
    
 }
 

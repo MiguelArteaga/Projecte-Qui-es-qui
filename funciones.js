@@ -22,19 +22,8 @@ var girarTiempo=1;
 
 function girar(id){
 	document.getElementById(id).addEventListener('click',girarcarta);
-<<<<<<< HEAD
 	if (girarTiempo == 1) {
 		girarcarta(id);
-=======
-	
-	girarcarta(id);
-	if (arrayclasses.includes(id)==false){
-		arrayclasses.push(id);
-		contadorfinal=contadorfinal+1;
-	}
-	if(contadorfinal==NumerosDeCartasImg-1){
-		finalJuego();
->>>>>>> ff1af714db2ba5facf7240ec153fa1a6770ec5e0
 	}
 	if(id=="rafa.jpg"){
 		contadoreaster=contadoreaster+1;
@@ -283,15 +272,9 @@ function validarPregunta(){
       	activarColorCorrecto();
       	desactivarColorIncorrecto();
       	habilitarBotonPregunta();
-<<<<<<< HEAD
       	tiempo();
-	}else if(selectCombo.value==glasses){
-		document.getElementById("mensajeCorrecto").innerText = "Sí tiene gafas.";
-=======
-
-	}else if(selectCombo.value==hair){
+		}else if(selectCombo.value==hair){
 		document.getElementById("mensajeCorrecto").innerText = "Sí, tiene el color de pelo "+selectCombo.value+".";
->>>>>>> ff1af714db2ba5facf7240ec153fa1a6770ec5e0
 		document.getElementById("mensajeError").innerText = "";
       	contador=contador+1;
       	document.getElementById("contadorPregunta").innerText = "Contador: "+contador;
@@ -299,14 +282,10 @@ function validarPregunta(){
       	activarColorCorrecto();
       	desactivarColorIncorrecto();
       	habilitarBotonPregunta();
-<<<<<<< HEAD
       	tiempo();
-	}else if(selectCombo.value==hair){
-		document.getElementById("mensajeCorrecto").innerText = "Sí, tiene el color de pelo "+selectCombo.value+".";
-=======
-	}else if(selectCombo.value==gender){
+		}else if(selectCombo.value==gender){
 		document.getElementById("mensajeCorrecto").innerText = "Sí, es "+selectCombo.value+".";
->>>>>>> ff1af714db2ba5facf7240ec153fa1a6770ec5e0
+
 		document.getElementById("mensajeError").innerText = "";
       	contador=contador+1;
       	document.getElementById("contadorPregunta").innerText = "Contador: "+contador;
@@ -314,13 +293,8 @@ function validarPregunta(){
       	activarColorCorrecto();
       	desactivarColorIncorrecto();
       	habilitarBotonPregunta();
-<<<<<<< HEAD
       	tiempo();
-	}
-	else{
-=======
 	}else{
->>>>>>> ff1af714db2ba5facf7240ec153fa1a6770ec5e0
 		document.getElementById("mensajeError").innerText = "No tiene la caracteristica seleccionada.";
 	      document.getElementById("mensajeCorrecto").innerText = "";
 	      contador=contador+1;

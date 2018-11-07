@@ -15,19 +15,15 @@ var arraycarac=[];
 var arraycarac2=[];
 var contadoreaster=0;
 var variablemodoeasy=0;
+var tempo;
+var girarTiempo=1;
 
 
 
 function girar(id){
 	document.getElementById(id).addEventListener('click',girarcarta);
-	CartaGirada+=1;
-	girarcarta(id);
-	if (arrayclasses.includes(id)==false){
-		arrayclasses.push(id);
-		contadorfinal=contadorfinal+1;
-	}
-	if(contadorfinal==NumerosDeCartasImg-1){
-		finalJuego();
+	if (girarTiempo == 1) {
+		girarcarta(id);
 	}
 	if(id=="rafa.jpg"){
 		contadoreaster=contadoreaster+1;
@@ -41,10 +37,40 @@ function girar(id){
 
 
 function girarcarta(id2){
-	CartaGirada+=1;
 	document.getElementById(id2).classList.add('flipped');
 	sonidocarta.play();
+	CartaGirada+=1;
+	if (arrayclasses.includes(id2)==false){
+		arrayclasses.push(id2);
+		contadorfinal=contadorfinal+1;
+	}
+	if(contadorfinal==NumerosDeCartasImg-1){
+		finalJuego();
+	}
+	
 }
+
+function tiempo(){
+	girarTiempo = 1;
+	var n = 20;
+	var l = document.getElementById("divsegundos");
+	tempo = setInterval(function(){
+		l.innerHTML = n; 
+		n=n-1
+		if (n == -1) {
+			clearInterval(tempo);
+		} 
+	},1000);
+	setTimeout(function(){
+		pararTiempo();
+	},20000);
+}
+
+function pararTiempo(){
+	girarTiempo = 0;
+}
+
+
 
 function nombreCartas(id){
 	arrayNombreCartas.push(id);
@@ -83,7 +109,9 @@ function finalJuego(){
 }
 function activarmodoeasy(){
 	variablemodoeasy=1;
+	girarTiempo=1;
 	document.getElementById('selectmodos').disabled=true;
+	document.getElementById('divsegundos').hidden=true;
 	arraycaracteristicas();
 
 }
@@ -91,6 +119,7 @@ function activarmodoeasy(){
 function activarmodoveryeasy(){
 	variablemodoeasy=1;
 	document.getElementById('selectmodos').disabled=true;
+	document.getElementById('divsegundos').hidden=true;
 }
 
 
@@ -141,7 +170,7 @@ function modoeasy(){
 	var gender = elementoAtrib.getAttribute("sexo");
 
 	var selectCombo = document.getElementById("ComboUnico");
-	
+	contador=contador+1;
 
 	if(selectCombo.value=="castany"||selectCombo.value=="moreno"||selectCombo.value=="rubio"){
 		for (var i=0;i<arraycarac2.length;i++){
@@ -224,7 +253,6 @@ function confirmarMensajeAviso(){
 		document.getElementById("mensajeCorrecto").innerText ="";
 	}
 }
-
 function validarPregunta(){
 	if(variablemodoeasy==0){
 		document.getElementById('botoneasyid').hidden=true;
@@ -250,6 +278,7 @@ function validarPregunta(){
       	activarColorCorrecto();
       	desactivarColorIncorrecto();
       	habilitarBotonPregunta();
+      	tiempo();
 	}else if(selectCombo.value==glasses){
 		document.getElementById("mensajeCorrecto").innerText = "Sí tiene gafas.";
 		document.getElementById("mensajeError").innerText = "";
@@ -259,6 +288,7 @@ function validarPregunta(){
       	activarColorCorrecto();
       	desactivarColorIncorrecto();
       	habilitarBotonPregunta();
+      	tiempo();
 	}else if(selectCombo.value==hair){
 		document.getElementById("mensajeCorrecto").innerText = "Sí, tiene el color de pelo "+selectCombo.value+".";
 		document.getElementById("mensajeError").innerText = "";
@@ -268,6 +298,7 @@ function validarPregunta(){
       	activarColorCorrecto();
       	desactivarColorIncorrecto();
       	habilitarBotonPregunta();
+      	tiempo();
 	}
 	else{
 		document.getElementById("mensajeError").innerText = "No tiene la caracteristica seleccionada.";
@@ -278,11 +309,15 @@ function validarPregunta(){
 	      activarColorIncorrecto();
 	      desactivarColorCorrecto();
 	      habilitarBotonPregunta();
+	      tiempo();
 	}
 	
 }
 function pedirnombre() {
     var person = prompt("Introduce tu nombre", "Nombre");
+	if (variablemodoeasy==1) {
+		contador = contador+1;
+	}
 	var puntostr =contador.toString();
 	if (contador<=9) {
 		var puntuacion = 0+puntostr; 

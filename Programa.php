@@ -230,9 +230,11 @@
 
         #ranking 
         echo "<div class='ranking'>";
-        $archivoran = fopen ("marcador.txt", "a");
         $puntos=$_GET["w1"];
         $nombre=$_GET["w2"];
+        if ($puntos != null && nombre != null) {
+          $archivoran = fopen ("marcador.txt", "a");
+        }
         fwrite($archivoran,$puntos." ".$nombre.PHP_EOL);
         fclose ($archivoran);
 
@@ -254,6 +256,9 @@
         echo "</table>";
         echo "</div>";
 
+
+
+        echo "<div class='divsegundos' id='divsegundos'>20</div>";
     }
 
 

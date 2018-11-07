@@ -1,10 +1,21 @@
 body{
     background-image: url(fondo.png);
 }
+
+.divsegundos{
+    width: 5%;
+    height: 4%;
+    background-color: black;
+    color: white;
+    text-align: center;
+    border-radius: 10%;
+
+}
+
 .p1pro{
     width: 20%;
     height: 25%;
-    top: 8%;
+    top: 6%;
     left: 10%;
     position: absolute;
     font-size: 200%;
@@ -741,5 +752,6 @@ body{
     right: 5%;
     position: absolute;
     color: white;
+    margin-right: 10%;
 
 }

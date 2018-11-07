@@ -19,6 +19,7 @@ var variablemodoeasy=0;
 
 function girar(id){
 	document.getElementById(id).addEventListener('click',girarcarta);
+	CartaGirada+=1;
 	girarcarta(id);
 	
 	if (arrayclasses.includes(id)==false){
@@ -247,32 +248,39 @@ function validarPregunta(){
 		document.getElementById("mensajeError").innerText = "";
       	contador=contador+1;
       	document.getElementById("contadorPregunta").innerText = "Contador: "+contador;
+      	document.getElementById("ComboUnico").value = "";
       	activarColorCorrecto();
       	desactivarColorIncorrecto();
+      	habilitarBotonPregunta();
 	}else if(selectCombo.value==glasses){
 		document.getElementById("mensajeCorrecto").innerText = "Sí tiene gafas.";
 		document.getElementById("mensajeError").innerText = "";
       	contador=contador+1;
       	document.getElementById("contadorPregunta").innerText = "Contador: "+contador;
+      	document.getElementById("ComboUnico").value = "";
       	activarColorCorrecto();
       	desactivarColorIncorrecto();
+      	habilitarBotonPregunta();
 	}else if(selectCombo.value==hair){
 		document.getElementById("mensajeCorrecto").innerText = "Sí, tiene el color de pelo "+selectCombo.value+".";
 		document.getElementById("mensajeError").innerText = "";
       	contador=contador+1;
       	document.getElementById("contadorPregunta").innerText = "Contador: "+contador;
+      	document.getElementById("ComboUnico").value = "";
       	activarColorCorrecto();
       	desactivarColorIncorrecto();
+      	habilitarBotonPregunta();
 	}
 	else{
 		document.getElementById("mensajeError").innerText = "No tiene la caracteristica seleccionada.";
 	      document.getElementById("mensajeCorrecto").innerText = "";
 	      contador=contador+1;
 	      document.getElementById("contadorPregunta").innerText = "Contador: "+contador;
+	      document.getElementById("ComboUnico").value = "";
 	      activarColorIncorrecto();
 	      desactivarColorCorrecto();
+	      habilitarBotonPregunta();
 	}
-	desactivarColorIncorrecto()
 	
 }
 function pedirnombre() {

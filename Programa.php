@@ -186,7 +186,7 @@
         echo"<div class='caja1'>";
         echo"<p>Elige una pregunta.</p>";
         echo"<select name='ComboUnico' id='ComboUnico' required onchange='habilitarBotonPregunta()'>";
-            echo"<option value='' name='selecciona'>-- Selecciona --</option>";
+            echo"<option value='' name='selecciona' selected='true' disabled='disabled'>-- Selecciona --</option>";
             for($a=0;$a<count($Nombres);$a++){
               for($b=0;$b<count($Atributos);$b++){
                 for($c=0;$c<count($Atributos[$b]);$c++){

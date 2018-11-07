@@ -1,4 +1,4 @@
-arrayNombreCartas=[];
+var arrayNombreCartas=[];
 
 var sonidocarta= new Audio('sonido/mariosalto.mp3');
 var gameover= new Audio('sonido/gameover.mp3');
@@ -17,16 +17,16 @@ var contadoreaster=0;
 var variablemodoeasy=0;
 
 
+
 function girar(id){
 	document.getElementById(id).addEventListener('click',girarcarta);
 	CartaGirada+=1;
 	girarcarta(id);
-	
 	if (arrayclasses.includes(id)==false){
 		arrayclasses.push(id);
 		contadorfinal=contadorfinal+1;
 	}
-	if(contadorfinal==11){
+	if(contadorfinal==NumerosDeCartasImg-1){
 		finalJuego();
 	}
 	if(id=="rafa.jpg"){
@@ -36,6 +36,7 @@ function girar(id){
 		easteregg.play();
 		document.getElementById('oculto').innerText="Creadores Del Juego: Cristian Salinas, Marcos Arteaga y Miguel Arteaga";
 	}
+
 }
 
 
@@ -66,7 +67,7 @@ function finalJuego(){
 	var UltimaCarta=arrayNombresCartas2.filter(Boolean);
 	girarcarta('id13');
 	if(UltimaCarta[0]==CartaOculta){
-		document.getElementById('p1prova').innerHTML="HAS GANADO!";
+		document.getElementById('p1final').innerHTML="HAS GANADO!";
 		fartificiales();
 		gamewin.play();
 		preguntar();
@@ -74,7 +75,7 @@ function finalJuego(){
 
 	}
 	else if(UltimaCarta!=CartaOculta) {
-		document.getElementById('p1prova').innerHTML="HAS PERDIDO!";
+		document.getElementById('p1final').innerHTML="HAS PERDIDO!";
 		gameover.play();
 
 	}
@@ -83,6 +84,8 @@ function finalJuego(){
 function activarmodoeasy(){
 	variablemodoeasy=1;
 	document.getElementById('selectmodos').disabled=true;
+	arraycaracteristicas();
+
 }
 
 function activarmodoveryeasy(){
@@ -103,10 +106,6 @@ function validarSelect(){
  		else{
  			validarPregunta();
  		}
- 		
- 		document.getElementById('botoneasyid').innerText="";
- 		document.getElementById('p2prova').innerText=variablemodoeasy;
- 		
  	}
 
 
@@ -115,22 +114,7 @@ function modoeasy2(){
 	modoeasy();
  	validarPregunta();
 }
-function modoeasy(){
-	var elementoAtrib = document.querySelector('#cartaOculta');
-	var hair = elementoAtrib.getAttribute("cabello");
-	var glasses = elementoAtrib.getAttribute("gafas");
-	var gender = elementoAtrib.getAttribute("sexo");
-
-	var selectCabello = document.getElementById("OptCabello");
-	var selectGafas = document.getElementById("OptGafas");
-	var selectSexo = document.getElementById("OptSexo");
-	if(gender=="hombre<br"){
-		gender="hombre";
-	}
-	else if(gender=="mujer<br"){
-		gender="mujer";
-	}
-	
+function arraycaracteristicas(){
 	for(var i=0;i<arraycartas.length;i++){
 		arraycartas2=String(arraycartas[i]).split(",");
 		arraycartas3=arraycartas2.filter(Boolean);
@@ -148,58 +132,69 @@ function modoeasy(){
 		arraycarac2[i].push(arraycartasnombre2[i]);
 	}
 	
+}
+
+function modoeasy(){
+	var elementoAtrib = document.querySelector('#cartaOculta');
+	var hair = elementoAtrib.getAttribute("cabello");
+	var glasses = elementoAtrib.getAttribute("gafas");
+	var gender = elementoAtrib.getAttribute("sexo");
+
+	var selectCombo = document.getElementById("ComboUnico");
 	
 
-	if(selectCabello.value!=0){
+	if(selectCombo.value=="castany"||selectCombo.value=="moreno"||selectCombo.value=="rubio"){
 		for (var i=0;i<arraycarac2.length;i++){
 			if(hair!=arraycarac2[i][3]){
-				if(arraycarac2[i][3]==selectCabello.value){
-					girar(arraycarac2[i][7]);
+				if(arraycarac2[i][3]==selectCombo.value){
+					if(contadorfinal!=NumerosDeCartasImg-1){
+						girar(arraycarac2[i][6]);
+					}
 				}
-				else if(hair==selectCabello.value){
+				else if(hair==selectCombo.value){
 					if(hair!=arraycarac2[i][3]){
-						girar(arraycarac2[i][7]);
+						if(contadorfinal!=NumerosDeCartasImg-1){
+						girar(arraycarac2[i][6]);
+						}
 					}
 				}
 			}
 		}	
 	}
-	//document.getElementById('OptCabello').value = 0;
-	else if(selectGafas.value!=0){
+	else if(selectCombo.value=="si"||selectCombo.value=="no"){
 		for (var i=0;i<arraycarac2.length;i++){
 			if(glasses!=arraycarac2[i][1]){
-				if(arraycarac2[i][1]==selectGafas.value){
-					girar(arraycarac2[i][7]);
+				if(arraycarac2[i][1]==selectCombo.value){
+					if(contadorfinal!=NumerosDeCartasImg-1){
+						girar(arraycarac2[i][6]);
+					}
 				}
 				else if(arraycarac2[i][1]!=glasses){
-					girar(arraycarac2[i][7]);
+					if(contadorfinal!=NumerosDeCartasImg-1){
+						girar(arraycarac2[i][6]);
+					}
 				}
 				
 			}
 		}
 	}
-	//document.getElementById('OptGafas').value = 0;
-	else if (selectSexo.value!=0) {
+	else if (selectCombo.value=="mujer"||selectCombo.value=="hombre") {
 		for (var i=0;i<arraycarac2.length;i++){
-			if(arraycarac2[i][5]=="hombre<br"){
-				gender2="hombre";
-			}
-			else if(arraycarac2[i][5]=="mujer<br"){
-				gender2="mujer";
-			}
-			if(gender!=gender2){
-				if(gender2==selectSexo.value){
-					girar(arraycarac2[i][7]);
+			if(gender!=arraycarac2[i][5]){
+				if(arraycarac2[i][5]==selectCombo.value){
+					if(contadorfinal!=NumerosDeCartasImg-1){
+						girar(arraycarac2[i][6]);
+					}
 				}
-				else if(gender2!=gender){
-					girar(arraycarac2[i][7]);
+				else if(arraycarac2[i][5]=gender){
+					if(contadorfinal!=NumerosDeCartasImg-1){
+						girar(arraycarac2[i][6]);
+					}
 				}
 				
 			}
 		}
 	}
-	//document.getElementById('OptSexo').value = 0;
-	
 }
 
 var contador = 0;
@@ -231,6 +226,9 @@ function confirmarMensajeAviso(){
 }
 
 function validarPregunta(){
+	if(variablemodoeasy==0){
+		document.getElementById('botoneasyid').hidden=true;
+	}
 	var elementoAtrib = document.querySelector('#cartaOculta');
 	var hair = elementoAtrib.getAttribute("cabello");
 	var glasses = elementoAtrib.getAttribute("gafas");

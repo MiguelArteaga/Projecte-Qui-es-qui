@@ -5,10 +5,10 @@
     <link href='estilos-quien-es-quien.css' type='text/css' rel='stylesheet' >
   </head>
 
-  <body>
-  <p id="oculto" class="ocultoclass"></p>
-  <p id="p1prova" class="p1pro" ></p>
+  <body> 
     <?php
+    echo "<p id='oculto' class='ocultoclass'></p>";
+    echo "<p id='p1final' class='p1pro' ></p>";
     #Arrays que usaremos
     $arrayImg = array();
     $arrayGeneral = array();
@@ -26,8 +26,7 @@
     $Img = fopen("imatges.txt", "r") or die("Error al leer documento.");
     while(!feof($Img)){
       $linea=fgets($Img);
-      $saltodelinea=nl2br($linea);
-      array_push($arrayImg, $saltodelinea);
+      array_push($arrayImg, $linea);
     }
     fclose($Img);
     # Añadimos el fichero en un array
@@ -140,6 +139,8 @@
       $DatosS = explode(" ", $DatosPersonajes[$s][2]);
       array_push($AtributosSexo, $DatosS);
     }
+    $numerodecartasimg=count($img);
+    
     $y=2;
     $w=1;
     $i=0;
@@ -230,6 +231,7 @@
     ?>
     <script type="text/javascript">
       var CartaOculta='<?php echo $cartaoculta;?>'
+      var NumerosDeCartasImg='<?php echo $numerodecartasimg;?>'
       var arrayNombresCartas2=<?php echo json_encode($img);?>;
       var arraycartas=<?php echo json_encode($caractimatges2);?>;
       var arraycartasnombres=<?php echo json_encode($arrayGeneral);?>;
@@ -239,7 +241,7 @@
       var bits=400; // Número de puntos
       var intensity=15; // Intensidad de la explosión (recomendado entre 3 y 10)
       var speed=20; // Velocidad (a menor numero, mas rapido)
-      var colours=new Array("#03f", "#f03", "#0e0", "#93f", "#0cc", "#f93");
+      var colours=new Array("#002BFF", "#7362FF", "#B200FF", "#3AFF00", "#FFF000", "#00FFD4");
       //Colores de los fuegos
 
       var dx, xpos, ypos, bangheight;

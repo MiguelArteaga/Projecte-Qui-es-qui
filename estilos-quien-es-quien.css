@@ -1,9 +1,6 @@
-#bodyfuegos{
-    
-    background-image: url('imagenes2/hasganado.png');
-
+body{
+    background-image: url(fondo.png);
 }
-
 .p1pro{
     width: 20%;
     height: 25%;

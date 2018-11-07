@@ -1,1 +1,1 @@
-#Proyecto Sprint 2
+#Integrantes: Marcos Arteaga, Miguel Arteaga, Cristian Salina

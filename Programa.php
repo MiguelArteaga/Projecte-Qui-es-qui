@@ -158,7 +158,7 @@
             if($cartaoculta==$arrayNombres[$o]){
               $AtCabello = $AtributosCabello[$o][$y];
               $AtGafas = $AtributosGafas[$o][$w];
-              $AtSexo = $AtributosSexo[$o][$y];
+              $AtSexo = rtrim($AtributosSexo[$o][$y]);
             }
           }
           echo"<div class='back'><img class='imgfront' id='cartaOculta' src='imagenes/$fotos' width='160' height='150' cabello='$AtCabello' gafas='$AtGafas' sexo='$AtSexo'></div>";
@@ -194,7 +194,6 @@
                   if($Nombres[$a]!='sexo' && $Nombres[$a]!='cabello'){
                     if($Atributos[$b][$c]=='si'){
                       echo'<option value='.$Atributos[$b][$c].'>¿Tiene '.$Nombres[$a].'?</option>';
-                    }else{
                       echo'<option value='.$Atributos[$b][$c].'>¿No tiene '.$Nombres[$a].'?</option>';
                     }
 

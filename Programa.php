@@ -5,9 +5,10 @@
     <link href='estilos-quien-es-quien.css' type='text/css' rel='stylesheet' >
   </head>
 
-  <body>
-  <p id="p1prova" class="p1pro" ></p>
+  <body> 
     <?php
+    echo "<p id='oculto' class='ocultoclass'></p>";
+    echo "<p id='p1final' class='p1pro' ></p>";
     #Arrays que usaremos
     $arrayImg = array();
     $arrayGeneral = array();
@@ -15,6 +16,7 @@
     $Carac = array();
     //Nuevo!
     $arraycaract=file('config.txt');
+
     $caractconfig=array();
     $caractconfig2=array();
     $caractimatges=array();
@@ -24,8 +26,7 @@
     $Img = fopen("imatges.txt", "r") or die("Error al leer documento.");
     while(!feof($Img)){
       $linea=fgets($Img);
-      $saltodelinea=nl2br($linea);
-      array_push($arrayImg, $saltodelinea);
+      array_push($arrayImg, $linea);
     }
     fclose($Img);
     # Añadimos el fichero en un array
@@ -122,6 +123,7 @@
     $AtributosGafas = array();
     $AtributosSexo = array();
     $logitudp = count($DatosPersonajes);
+
     #Creando array AtributosCabello
     for($c=0;$c<$logitudp;$c++){
       $DatosC = explode(" ", $DatosPersonajes[$c][1]);
@@ -137,80 +139,163 @@
       $DatosS = explode(" ", $DatosPersonajes[$s][2]);
       array_push($AtributosSexo, $DatosS);
     }
+    $numerodecartasimg=count($img);
+    
+
+    
     $y=2;
     $w=1;
     $i=0;
+    echo "<div class='tablero'>";
+     echo "<div class='divsegundos' id='divsegundos'>20</div>";
     foreach ($img as $fotos) {
       if( substr($fotos,-3)=="jpg" or substr($fotos,-3)=="png" or substr($fotos,-4)=="jpeg"){
-        echo "<div id='$arrayId[$i]' onclick='girar(this.id)' class='$arrayDiv[$i]'>";
-        echo "<div><img id='$fotos' onclick='nombreCartas(this.id)' src='imagenes/$fotos' width='100' height='100'></div>";
-        echo "<div class='back'><img src='imagenes2/reversos.jpg' width='100' height='100'></div>";
+        echo "<div id='$fotos' onclick='girar(this.id)' class='$arrayDiv[$i]'>";
+        echo "<div><img class='imgfront' id='$fotos' onclick='nombreCartas(this.id)' src='imagenes/$fotos' width='100' height='100'></div>";
+        echo "<div class='back'><img class='imgback'src='imagenes2/reversos.jpg' width='100' height='100'></div>";
         echo "</div>";
         $i=$i+1;
         if ($cartaoculta==$fotos) {
           echo "<div id='id13' class='divoculta'>";
-          echo "<div><img src='imagenes2/reversos.jpg' width='120' height='120'></div>";
+          echo "<div><img class='imgback'src='imagenes2/reversos.jpg' width='150' height='150'></div>";
           for($o=0;$o<12;$o++){
             if($cartaoculta==$arrayNombres[$o]){
               $AtCabello = $AtributosCabello[$o][$y];
               $AtGafas = $AtributosGafas[$o][$w];
-              $AtSexo = $AtributosSexo[$o][$y];
+              $AtSexo = rtrim($AtributosSexo[$o][$y]);
             }
           }
-          echo"<div class='back'><img id='cartaOculta' src='imagenes/$fotos' width='150' height='150' cabello='$AtCabello' gafas='$AtGafas' sexo='$AtSexo'></div>";
+          echo"<div class='back'><img class='imgfront' id='cartaOculta' src='imagenes/$fotos' width='160' height='150' cabello='$AtCabello' gafas='$AtGafas' sexo='$AtSexo'></div>";
           echo "</div>";
         }
     }
+    echo "</div>";
     }
-      $namesC = array('rubio', 'moreno', 'castany');
-        $namesG = array('si', 'no');
-        $namesS = array('hombre', 'mujer');
-        $longC = count($namesC);
-        $longGS = count($namesG);
-echo"<form method='post' name='formulario'>";
-        echo"<div class='general'>";
-          echo"<div class='caja1'>";
-          echo"<p>¿Color de pelo?</p>";
-            echo"<select name='OptCabello' id='OptCabello'>";
-                echo"<option value='0'>--Selecciona--</option>";
-              for($e=0;$e<$longC;$e++){
-                echo"<option value='$namesC[$e]'>$namesC[$e]</option>";
-              }
-            echo"</select>";
-          echo"</div>";
-          echo"<div class='caja2'>";
-          echo"<p>¿Tiene gafas?</p>";
-            echo"<select name='OptGafas' id='OptGafas'>";
-                echo"<option value='0'>--Selecciona--</option>";
-              for($e=0;$e<$longGS;$e++){
-                echo"<option value='$namesG[$e]'>$namesG[$e]</option>";
-              }
-            echo"</select>";
-          echo"</div>";
-          echo"<div class='caja3'>";
-          echo"<p>¿Género?</p>";
-              echo"<select name='OptSexo' id='OptSexo'>";
-                  echo"<option value='0'>--Selecciona--</option>";
-                for($i=0;$i<$longGS;$i++){
-                  echo"<option value='$namesS[$i]'>$namesS[$i]</option>";
+    $Config = fopen("config.txt", "r");
+    $Conf = array();
+    $GeneralConfig = array();
+    $Atributos= array();
+    $Nombres = array();
+    while(!feof($Config)){
+        $linea=fgets($Config);
+        array_push($Conf, $linea);
+    }
+    fclose($Config);
+    for($w=0;$w<count($Conf);$w++){
+        $Nombre = explode(":", $Conf[$w]);
+        $Atributo = explode(" ",$Nombre[1]);
+        array_push($Nombres, $Nombre[0]);
+        array_push($Atributos, $Atributo);  
+    }
+    echo"<form method='post' name='formulario'>";
+    echo"<div class='general'>";
+        echo"<div class='caja1'>";
+        echo"<p>Elige una pregunta.</p>";
+        echo"<select name='ComboUnico' id='ComboUnico' required onchange='habilitarBotonPregunta()'>";
+            echo"<option value='' name='selecciona' selected='true' disabled='disabled'>-- Selecciona --</option>";
+            for($a=0;$a<count($Nombres);$a++){
+              for($b=0;$b<count($Atributos);$b++){
+                for($c=0;$c<count($Atributos[$b]);$c++){
+                  if($Nombres[$a]!='sexo' && $Nombres[$a]!='cabello'){
+                    if($Atributos[$b][$c]=='si'){
+                      echo'<option value='.$Atributos[$b][$c].'>¿Tiene '.$Nombres[$a].'?</option>';
+                      echo'<option value='.$Atributos[$b][$c].'>¿No tiene '.$Nombres[$a].'?</option>';
+                    }
+
+                  }
                 }
-              echo"</select>";
-          echo"</div>";
-          echo"<input type='button' name='pregunta' value='Haz la pregunta' onclick='validarSelect()'>";
-          echo"</form>";
-          echo"<div class='mensajeCorrecto'>";
-          echo"<p id='mensajeCorrecto'></p>";
-          echo"</div>";
-          echo"<div class='mensajeError'>";
-          echo"<p id='mensajeError'></p>";
-          echo"</div>";
+                 break;
+                }   
+              }
+            for($w=0;$w<count($Atributos[1]);$w++){
+                echo'<option value='.rtrim($Atributos[1][$w]).'>¿Es '.rtrim($Atributos[1][$w]).'?</option>';
+            }
+            for($y=0;$y<count($Atributos[2]);$y++){
+                echo'<option value='.rtrim($Atributos[2][$y]).'>¿Es '.rtrim($Atributos[2][$y]).'?</option>';
+            }
+        echo"</select>";
         echo"</div>";
-        echo"<input id='botoneasy' class='boton1' type='button' name='easy' value='MODO EASY'>";
+        echo"<input type='button' id='pregunta' disabled value='Haz la pregunta' onclick='validarSelect(); mensajeAviso();'>";
+    echo"</form>";
+        echo"<div class='caja1'";
+          echo"<p class='contadorPregunta' id='contadorPregunta'>Contador: 0</p>";
+        echo"</div>";
+          echo"<p id='mensajeCorrecto'></p>";
+
+          echo"<p id='mensajeError'></p>";
+
+        echo"</div>";
+        echo"<p id='botoneasyid'>";
+        echo"<select name='modos' id='selectmodos'>";
+          echo "<option value='1'> --Modo-- </option>";
+          echo"<option value='2' onclick='activarmodoeasy()'>Modo Easy</option>";
+          echo"<option value='3' onclick='activarmodoveryeasy()' >Very Easy</option>";
+        echo"</select>";
+        echo"</p>";
+
+        #ranking 
+        echo "<div class='ranking'>";
+        $puntos=$_GET["w1"];
+        $nombre=$_GET["w2"];
+        if ($puntos != null && nombre != null) {
+          $archivoran = fopen ("marcador.txt", "a");
+        }
+        fwrite($archivoran,$puntos." ".$nombre.PHP_EOL);
+        fclose ($archivoran);
+
+
+
+        $lineas;
+        $archivoran = fopen ("marcador.txt", "r");
+        $arrayMarcador=file("marcador.txt");
+
+        sort($arrayMarcador);
+        echo "<p class='tituloran' align='center'><b>Ranking de ganadores</b></p>";
+        echo "<table  class='tabla'>";
+        foreach ($arrayMarcador as $value) {
+          echo "<tr>";
+          echo "<td>$value</td>";
+          echo "</tr>";
+        }
+        echo "</table>";
+        echo "</div>";
+
+
+
+       
     }
+
     ?>
     <script type="text/javascript">
       var CartaOculta='<?php echo $cartaoculta;?>'
+      var NumerosDeCartasImg='<?php echo $numerodecartasimg;?>'
       var arrayNombresCartas2=<?php echo json_encode($img);?>;
+      var arraycartas=<?php echo json_encode($caractimatges2);?>;
+      var arraycartasnombres=<?php echo json_encode($arrayGeneral);?>;
+      var arraysexo=<?php echo json_encode($AtributosSexo);?>;
+
+      // Fuegos artificiales
+
+      var bits=400; // Número de puntos
+      var intensity=15; // Intensidad de la explosión (recomendado entre 3 y 10)
+      var speed=20; // Velocidad (a menor numero, mas rapido)
+      var colours=new Array("#002BFF", "#7362FF", "#B200FF", "#3AFF00", "#FFF000", "#00FFD4");
+      //Colores de los fuegos
+
+      var dx, xpos, ypos, bangheight;
+      var Xpos=new Array();
+      var Ypos=new Array();
+      var dX=new Array();
+      var dY=new Array();
+      var decay=new Array();
+      var colour=0;
+      var swide=800;
+      var shigh=600;
+
+
+      
+      
+       
     </script>
   </body>
 </html>

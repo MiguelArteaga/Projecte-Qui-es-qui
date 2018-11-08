@@ -15,16 +15,19 @@ var arraycarac=[];
 var arraycarac2=[];
 var contadoreaster=0;
 var variablemodoeasy=0;
-var varableveryeasy=0;
-var tempo;
-var girarTiempo=1;
 
 
 
 function girar(id){
 	document.getElementById(id).addEventListener('click',girarcarta);
-	if (girarTiempo == 1) {
-		girarcarta(id);
+	
+	girarcarta(id);
+	if (arrayclasses.includes(id)==false){
+		arrayclasses.push(id);
+		contadorfinal=contadorfinal+1;
+	}
+	if(contadorfinal==NumerosDeCartasImg-1){
+		finalJuego();
 	}
 	if(id=="rafa.jpg"){
 		contadoreaster=contadoreaster+1;
@@ -36,47 +39,12 @@ function girar(id){
 
 }
 
-function borrarOpcion(){
-	var selectCombo2=document.getElementById('ComboUnico');
-	selectCombo2.remove(selectCombo2.selectedIndex);
-}
-
 
 function girarcarta(id2){
+	CartaGirada+=1;
 	document.getElementById(id2).classList.add('flipped');
 	sonidocarta.play();
-	CartaGirada+=1;
-	if (arrayclasses.includes(id2)==false){
-		arrayclasses.push(id2);
-		contadorfinal=contadorfinal+1;
-	}
-	if(contadorfinal==NumerosDeCartasImg-1){
-		finalJuego();
-	}
-	
 }
-
-function tiempo(){
-	girarTiempo = 1;
-	var n = 20;
-	var l = document.getElementById("divsegundos");
-	tempo = setInterval(function(){
-		l.innerHTML = n; 
-		n=n-1
-		if (n == -1) {
-			clearInterval(tempo);
-		} 
-	},1000);
-	setTimeout(function(){
-		pararTiempo();
-	},20000);
-}
-
-function pararTiempo(){
-	girarTiempo = 0;
-}
-
-
 
 function nombreCartas(id){
 	arrayNombreCartas.push(id);
@@ -115,20 +83,14 @@ function finalJuego(){
 }
 function activarmodoeasy(){
 	variablemodoeasy=1;
-	girarTiempo=1;
 	document.getElementById('selectmodos').disabled=true;
-	document.getElementById('divsegundos').hidden=true;
 	arraycaracteristicas();
 
 }
 
 function activarmodoveryeasy(){
 	variablemodoeasy=1;
-	varableveryeasy=1;
-	girarTiempo=1
 	document.getElementById('selectmodos').disabled=true;
-	document.getElementById('divsegundos').hidden=true;
-	arraycaracteristicas();
 }
 
 
@@ -169,6 +131,7 @@ function arraycaracteristicas(){
 	for(var i=0;i<arraycarac2.length;i++){
 		arraycarac2[i].push(arraycartasnombre2[i]);
 	}
+	
 }
 
 function modoeasy(){
@@ -176,8 +139,10 @@ function modoeasy(){
 	var hair = elementoAtrib.getAttribute("cabello");
 	var glasses = elementoAtrib.getAttribute("gafas");
 	var gender = elementoAtrib.getAttribute("sexo");
+
 	var selectCombo = document.getElementById("ComboUnico");
-	contador=contador+1;
+	
+
 	if(selectCombo.value=="castany"||selectCombo.value=="moreno"||selectCombo.value=="rubio"){
 		for (var i=0;i<arraycarac2.length;i++){
 			if(hair!=arraycarac2[i][3]){
@@ -214,27 +179,14 @@ function modoeasy(){
 		}
 	}
 	else if (selectCombo.value=="mujer"||selectCombo.value=="hombre") {
-		if(selectCombo.value=="hombre"){
-			var selectcombosexo=arraycarac2[0][5];
-		}
-		else if(selectCombo.value=="mujer"){
-			var selectcombosexo=arraycarac2[9][5];
-		}
-		if(gender=="hombre"){
-			var gendersexo=arraycarac2[0][5];
-		}
-		else if(gender=="mujer"){
-			var gendersexo=arraycarac2[9][5];
-		}
-		arraycarac2[11][5]=arraycarac2[9][5];
 		for (var i=0;i<arraycarac2.length;i++){
-			if(gendersexo!=arraycarac2[i][5]){
-				if(arraycarac2[i][5]==selectcombosexo){
+			if(gender!=arraycarac2[i][5]){
+				if(arraycarac2[i][5]==selectCombo.value){
 					if(contadorfinal!=NumerosDeCartasImg-1){
 						girar(arraycarac2[i][6]);
 					}
 				}
-				else if(arraycarac2[i][5]!=gendersexo){
+				else if(arraycarac2[i][5]=gender){
 					if(contadorfinal!=NumerosDeCartasImg-1){
 						girar(arraycarac2[i][6]);
 					}
@@ -272,6 +224,7 @@ function confirmarMensajeAviso(){
 		document.getElementById("mensajeCorrecto").innerText ="";
 	}
 }
+
 function validarPregunta(){
 	if(variablemodoeasy==0){
 		document.getElementById('botoneasyid').hidden=true;
@@ -282,7 +235,7 @@ function validarPregunta(){
 	var gender = elementoAtrib.getAttribute("sexo");
 	var selectCombo = document.getElementById("ComboUnico");
 	
-		if(selectCombo.value==glasses){
+	if(selectCombo.value==glasses){
 		document.getElementById("mensajeCorrecto").innerText = "Sí tiene gafas.";
 		document.getElementById("mensajeError").innerText = "";
       	contador=contador+1;
@@ -291,10 +244,8 @@ function validarPregunta(){
       	activarColorCorrecto();
       	desactivarColorIncorrecto();
       	habilitarBotonPregunta();
-      	tiempo();
 
-		}
-		else if(selectCombo.value==hair){
+	}else if(selectCombo.value==hair){
 		document.getElementById("mensajeCorrecto").innerText = "Sí, tiene el color de pelo "+selectCombo.value+".";
 		document.getElementById("mensajeError").innerText = "";
       	contador=contador+1;
@@ -303,10 +254,8 @@ function validarPregunta(){
       	activarColorCorrecto();
       	desactivarColorIncorrecto();
       	habilitarBotonPregunta();
-      	tiempo();
-		}else if(selectCombo.value==gender){
+	}else if(selectCombo.value==gender){
 		document.getElementById("mensajeCorrecto").innerText = "Sí, es "+selectCombo.value+".";
-
 		document.getElementById("mensajeError").innerText = "";
       	contador=contador+1;
       	document.getElementById("contadorPregunta").innerText = "Contador: "+contador;
@@ -314,9 +263,7 @@ function validarPregunta(){
       	activarColorCorrecto();
       	desactivarColorIncorrecto();
       	habilitarBotonPregunta();
-      	tiempo();
-		}
-		else{
+	}else{
 		document.getElementById("mensajeError").innerText = "No tiene la caracteristica seleccionada.";
 	      document.getElementById("mensajeCorrecto").innerText = "";
 	      contador=contador+1;
@@ -325,14 +272,11 @@ function validarPregunta(){
 	      activarColorIncorrecto();
 	      desactivarColorCorrecto();
 	      habilitarBotonPregunta();
-	      tiempo();
-		}
+	}
+	
 }
 function pedirnombre() {
     var person = prompt("Introduce tu nombre", "Nombre");
-	if (variablemodoeasy==1) {
-		contador = contador+1;
-	}
 	var puntostr =contador.toString();
 	if (contador<=9) {
 		var puntuacion = 0+puntostr; 

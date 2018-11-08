@@ -1,1 +1,6 @@
-#Integrantes: Marcos Arteaga, Miguel Arteaga, Cristian Salina
+Projecte Qui es qui.
+Integrans:
+Marcos Arteaga
+Miguel Arteaga
+Cristian Salinas
+

@@ -141,6 +141,8 @@
     }
     $numerodecartasimg=count($img);
     
+
+    
     $y=2;
     $w=1;
     $i=0;
@@ -225,8 +227,9 @@
         echo"</div>";
         echo"<p id='botoneasyid'>";
         echo"<select name='modos' id='selectmodos'>";
-          echo"<option value='1' onclick='activarmodoeasy()'>Modo Easy</option>";
-          echo"<option value='2' onclick='activarmodoveryeasy()' >Very Easy</option>";
+          echo "<option value='1'> --Modo-- </option>";
+          echo"<option value='2' onclick='activarmodoeasy()'>Modo Easy</option>";
+          echo"<option value='3' onclick='activarmodoveryeasy()' >Very Easy</option>";
         echo"</select>";
         echo"</p>";
 

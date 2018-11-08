@@ -125,8 +125,10 @@ function activarmodoeasy(){
 function activarmodoveryeasy(){
 	variablemodoeasy=1;
 	varableveryeasy=1;
+	girarTiempo=1
 	document.getElementById('selectmodos').disabled=true;
 	document.getElementById('divsegundos').hidden=true;
+	arraycaracteristicas();
 }
 
 
@@ -280,7 +282,7 @@ function validarPregunta(){
 	var gender = elementoAtrib.getAttribute("sexo");
 	var selectCombo = document.getElementById("ComboUnico");
 	
-	if(selectCombo.value==glasses){
+		if(selectCombo.value==glasses){
 		document.getElementById("mensajeCorrecto").innerText = "Sí tiene gafas.";
 		document.getElementById("mensajeError").innerText = "";
       	contador=contador+1;
@@ -290,7 +292,9 @@ function validarPregunta(){
       	desactivarColorIncorrecto();
       	habilitarBotonPregunta();
       	tiempo();
-		}else if(selectCombo.value==hair){
+
+		}
+		else if(selectCombo.value==hair){
 		document.getElementById("mensajeCorrecto").innerText = "Sí, tiene el color de pelo "+selectCombo.value+".";
 		document.getElementById("mensajeError").innerText = "";
       	contador=contador+1;
@@ -311,7 +315,8 @@ function validarPregunta(){
       	desactivarColorIncorrecto();
       	habilitarBotonPregunta();
       	tiempo();
-	}else{
+		}
+		else{
 		document.getElementById("mensajeError").innerText = "No tiene la caracteristica seleccionada.";
 	      document.getElementById("mensajeCorrecto").innerText = "";
 	      contador=contador+1;
@@ -321,8 +326,7 @@ function validarPregunta(){
 	      desactivarColorCorrecto();
 	      habilitarBotonPregunta();
 	      tiempo();
-	}
-	
+		}
 }
 function pedirnombre() {
     var person = prompt("Introduce tu nombre", "Nombre");

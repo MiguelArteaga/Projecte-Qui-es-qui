@@ -1,14 +1,15 @@
 body{
-    background-image: url(fondo.png);
+   background-color:#F5B7B1; 
 }
 
 .divsegundos{
-    width: 5%;
+    width: 8%;
     height: 4%;
     background-color: black;
     color: white;
     text-align: center;
     border-radius: 10%;
+    top:2%;
 
 }
 
@@ -747,11 +748,29 @@ body{
 
 .ranking{
     width: 20%;
-    height: 25%;
+    height:25%;
     top: 20%;
-    right: 5%;
+    right: 2%;
     position: absolute;
-    color: white;
-    margin-right: 10%;
+    color: red;
+    background-color: white;
+    border-radius: 5%;
 
+
+}
+.tabla{
+    height:68%;
+    width:100%;
+    background-color:#EB003E;
+    border-radius: 5%;
+    padding-left: 30%;
+    color: white;
+
+}
+
+.tablero{
+    margin-left: 5%;
+    width: 60%;
+    height: 100%;
+    background-image: url(fondo.png);
 }

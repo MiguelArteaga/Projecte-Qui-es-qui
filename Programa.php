@@ -144,6 +144,8 @@
     $y=2;
     $w=1;
     $i=0;
+    echo "<div class='tablero'>";
+     echo "<div class='divsegundos' id='divsegundos'>20</div>";
     foreach ($img as $fotos) {
       if( substr($fotos,-3)=="jpg" or substr($fotos,-3)=="png" or substr($fotos,-4)=="jpeg"){
         echo "<div id='$fotos' onclick='girar(this.id)' class='$arrayDiv[$i]'>";
@@ -165,6 +167,7 @@
           echo "</div>";
         }
     }
+    echo "</div>";
     }
     $Config = fopen("config.txt", "r");
     $Conf = array();
@@ -244,9 +247,8 @@
         $arrayMarcador=file("marcador.txt");
 
         sort($arrayMarcador);
-        echo "<p>Ranking de ganadores</p>";
-        echo "<table border=1 height='200' width='400'>";
-        echo "<tr><td>Puntos         Jugadores</td></tr>";
+        echo "<p class='tituloran' align='center'><b>Ranking de ganadores</b></p>";
+        echo "<table  class='tabla'>";
         foreach ($arrayMarcador as $value) {
           echo "<tr>";
           echo "<td>$value</td>";
@@ -257,7 +259,7 @@
 
 
 
-        echo "<div class='divsegundos' id='divsegundos'>20</div>";
+       
     }
 
 

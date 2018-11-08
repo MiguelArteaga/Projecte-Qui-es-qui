@@ -7,6 +7,7 @@
 
   <body> 
     <?php
+    echo "<p id='oculto2' ></p>";
     echo "<p id='oculto' class='ocultoclass'></p>";
     echo "<p id='p1final' class='p1pro' ></p>";
     #Arrays que usaremos
@@ -260,7 +261,6 @@
         echo "<div class='divsegundos' id='divsegundos'>20</div>";
     }
 
-
     ?>
     <script type="text/javascript">
       var CartaOculta='<?php echo $cartaoculta;?>'
@@ -268,6 +268,7 @@
       var arrayNombresCartas2=<?php echo json_encode($img);?>;
       var arraycartas=<?php echo json_encode($caractimatges2);?>;
       var arraycartasnombres=<?php echo json_encode($arrayGeneral);?>;
+      var arraysexo=<?php echo json_encode($AtributosSexo);?>;
 
       // Fuegos artificiales
 

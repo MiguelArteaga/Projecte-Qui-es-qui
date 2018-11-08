@@ -15,6 +15,7 @@ var arraycarac=[];
 var arraycarac2=[];
 var contadoreaster=0;
 var variablemodoeasy=0;
+var varableveryeasy=0;
 var tempo;
 var girarTiempo=1;
 
@@ -33,6 +34,11 @@ function girar(id){
 		document.getElementById('oculto').innerText="Creadores Del Juego: Cristian Salinas, Marcos Arteaga y Miguel Arteaga";
 	}
 
+}
+
+function borrarOpcion(){
+	var selectCombo2=document.getElementById('ComboUnico');
+	selectCombo2.remove(selectCombo2.selectedIndex);
 }
 
 
@@ -118,6 +124,7 @@ function activarmodoeasy(){
 
 function activarmodoveryeasy(){
 	variablemodoeasy=1;
+	varableveryeasy=1;
 	document.getElementById('selectmodos').disabled=true;
 	document.getElementById('divsegundos').hidden=true;
 }
@@ -160,7 +167,6 @@ function arraycaracteristicas(){
 	for(var i=0;i<arraycarac2.length;i++){
 		arraycarac2[i].push(arraycartasnombre2[i]);
 	}
-	
 }
 
 function modoeasy(){
@@ -168,10 +174,9 @@ function modoeasy(){
 	var hair = elementoAtrib.getAttribute("cabello");
 	var glasses = elementoAtrib.getAttribute("gafas");
 	var gender = elementoAtrib.getAttribute("sexo");
-
 	var selectCombo = document.getElementById("ComboUnico");
 	contador=contador+1;
-
+	document.getElementById('oculto2').innerText=arraysexo[0][2];
 	if(selectCombo.value=="castany"||selectCombo.value=="moreno"||selectCombo.value=="rubio"){
 		for (var i=0;i<arraycarac2.length;i++){
 			if(hair!=arraycarac2[i][3]){
@@ -208,14 +213,27 @@ function modoeasy(){
 		}
 	}
 	else if (selectCombo.value=="mujer"||selectCombo.value=="hombre") {
+		if(selectCombo.value=="hombre"){
+			var selectcombosexo=arraycarac2[0][5];
+		}
+		else if(selectCombo.value=="mujer"){
+			var selectcombosexo=arraycarac2[9][5];
+		}
+		if(gender=="hombre"){
+			var gendersexo=arraycarac2[0][5];
+		}
+		else if(gender=="mujer"){
+			var gendersexo=arraycarac2[9][5];
+		}
+		arraycarac2[11][5]=arraycarac2[9][5];
 		for (var i=0;i<arraycarac2.length;i++){
-			if(gender!=arraycarac2[i][5]){
-				if(arraycarac2[i][5]==selectCombo.value){
+			if(gendersexo!=arraycarac2[i][5]){
+				if(arraycarac2[i][5]==selectcombosexo){
 					if(contadorfinal!=NumerosDeCartasImg-1){
 						girar(arraycarac2[i][6]);
 					}
 				}
-				else if(arraycarac2[i][5]=gender){
+				else if(arraycarac2[i][5]!=gendersexo){
 					if(contadorfinal!=NumerosDeCartasImg-1){
 						girar(arraycarac2[i][6]);
 					}

@@ -7,7 +7,6 @@
 
   <body> 
     <?php
-    echo "<p id='oculto2' ></p>";
     echo "<p id='oculto' class='ocultoclass'></p>";
     echo "<p id='p1final' class='p1pro' ></p>";
     #Arrays que usaremos

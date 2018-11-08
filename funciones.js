@@ -176,7 +176,6 @@ function modoeasy(){
 	var gender = elementoAtrib.getAttribute("sexo");
 	var selectCombo = document.getElementById("ComboUnico");
 	contador=contador+1;
-	document.getElementById('oculto2').innerText=arraysexo[0][2];
 	if(selectCombo.value=="castany"||selectCombo.value=="moreno"||selectCombo.value=="rubio"){
 		for (var i=0;i<arraycarac2.length;i++){
 			if(hair!=arraycarac2[i][3]){
